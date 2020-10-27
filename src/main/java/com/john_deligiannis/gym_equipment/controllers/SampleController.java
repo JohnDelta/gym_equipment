@@ -1,13 +1,13 @@
-package gym_equipment.controllers;
+package com.john_deligiannis.gym_equipment.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class SampleController {
 
-	@GetMapping("/sample")
+	@RequestMapping("/sample")
     public ModelAndView showForm() {
 		
 		ModelAndView mv = new ModelAndView(); 
