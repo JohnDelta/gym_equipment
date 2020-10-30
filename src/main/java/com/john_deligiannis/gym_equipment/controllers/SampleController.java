@@ -11,7 +11,7 @@ import com.john_deligiannis.gym_equipment.config.HibernateUtil;
 public class SampleController {
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
-    public ModelAndView showDefault() {HibernateUtil.getSessionFactory();
+    public ModelAndView showDefault() {
 		
 		ModelAndView mv = new ModelAndView(); 
         mv.setViewName("index");

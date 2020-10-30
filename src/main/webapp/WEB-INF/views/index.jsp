@@ -18,5 +18,6 @@
 	</head>
 	<body>
 		index <%=text%>
+		<img src="images/default.png" />
 	</body>
 </html>

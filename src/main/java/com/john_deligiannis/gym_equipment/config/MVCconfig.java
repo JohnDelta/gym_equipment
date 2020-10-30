@@ -13,6 +13,9 @@ import org.springframework.web.servlet.view.JstlView;
 @Configuration
 @ComponentScan(basePackages = {"com.john_deligiannis.gym_equipment"})
 public class MVCconfig implements WebMvcConfigurer {
+	
+	// for product images saved
+	public static String uploadDirectory= "C:\\users\\john\\Documents\\gym_equipment_uploads";
 
     @Bean
     public InternalResourceViewResolver viewResolver(){
@@ -25,7 +28,14 @@ public class MVCconfig implements WebMvcConfigurer {
     
     @Override 
     public void addResourceHandlers(ResourceHandlerRegistry registry) { 
-     registry.addResourceHandler("/resources/**").addResourceLocations("/resources/"); 
+    	registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+    	registry.addResourceHandler("/images/**").addResourceLocations("file:" + uploadDirectory+"\\");
+    }
+    
+    @Bean
+    public void dataFill() {
+    	System.out.println("Load temporary data in database");
+    	HibernateUtil.databaseFill();
     }
     
 }
