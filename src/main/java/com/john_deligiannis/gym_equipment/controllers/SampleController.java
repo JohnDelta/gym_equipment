@@ -5,9 +5,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.john_deligiannis.gym_equipment.config.HibernateUtil;
+
 @Controller
 public class SampleController {
 
+	@RequestMapping(value="/", method=RequestMethod.GET)
+    public ModelAndView showDefault() {HibernateUtil.getSessionFactory();
+		
+		ModelAndView mv = new ModelAndView(); 
+        mv.setViewName("index");
+        
+        return mv; 
+    }
+	
 	@RequestMapping(value="/sample", method=RequestMethod.GET)
     public ModelAndView showForm() {
 		
