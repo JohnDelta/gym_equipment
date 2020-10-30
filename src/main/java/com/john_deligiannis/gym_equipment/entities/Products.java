@@ -8,18 +8,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="product")
-public class Product {
+@Table(name = "products")
+public class Products {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productId")
-	private long productId;
+    @Column(name = "productsId")
+	private long productsId;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "description")
+	@Column(name = "description", length = 10000)
 	private String description;
 	
 	@Column(name = "price")
@@ -34,8 +34,8 @@ public class Product {
 	@Column(name = "quantity")
 	private long quantity;
 
-	public long getProductId() {
-		return productId;
+	public long getProductsId() {
+		return productsId;
 	}
 
 	public String getTitle() {
@@ -62,8 +62,8 @@ public class Product {
 		return quantity;
 	}
 
-	public void setProductId(long productId) {
-		this.productId = productId;
+	public void setProductsId(long productsId) {
+		this.productsId = productsId;
 	}
 
 	public void setTitle(String title) {
@@ -89,5 +89,5 @@ public class Product {
 	public void setQuantity(long quantity) {
 		this.quantity = quantity;
 	}
-	
+
 }

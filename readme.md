@@ -36,7 +36,7 @@ E-shop selling gym equipment created using the Spring MVC framework
 ` grant all on gym_equipment.* to 'gym_equipment_user'@'%'; `
 
 ## Install locally
-- Images upload folder initialized in path `C:\\users\\john\\Documents\\gym_equipment_uploads` changed it from com.john_deligiannis.gym_equipment.config.MVCconfig.java
+- Product data upload folder initialized in path `C:\\users\\john\\Documents\\gym_equipment_uploads` changed it from com.john_deligiannis.gym_equipment.config.MVCconfig.java 
 - clone project into your documents
 ` git clone  `
 - import maven project into your IDE

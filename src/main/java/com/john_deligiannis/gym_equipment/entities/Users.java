@@ -8,13 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "users")
+public class Users {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId")
-	private long userId;
+    @Column(name = "usersId")
+	private long usersId;
 	
 	@Column(name = "role")
 	private long role;
@@ -43,12 +43,8 @@ public class User {
 	@Column(name = "city")
 	private String city;
 
-	public long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(long userId) {
-		this.userId = userId;
+	public long getUsersId() {
+		return usersId;
 	}
 
 	public long getRole() {
@@ -87,6 +83,10 @@ public class User {
 		return city;
 	}
 
+	public void setUsersId(long usersId) {
+		this.usersId = usersId;
+	}
+
 	public void setRole(long role) {
 		this.role = role;
 	}
@@ -122,5 +122,5 @@ public class User {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+		
 }

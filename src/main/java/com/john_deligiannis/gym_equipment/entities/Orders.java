@@ -10,15 +10,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "orders")
+public class Orders {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderId")
+    @Column(name = "ordersId")
 	private long orderId;
 	
-	@Column(name = "orderNumber")
+	@Column(name = "ordersNumber")
 	private long orderNumber;
 	
 	@Column(name = "quantity")
@@ -28,12 +28,12 @@ public class Order {
 	private String checked;
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
-	private User user;
+	@JoinColumn(name = "usersId", referencedColumnName = "usersId")
+	private Users users;
 	
 	@ManyToOne
-	@JoinColumn(name = "productId")
-	private Product product;
+	@JoinColumn(name = "productsId", referencedColumnName = "productsId")
+	private Products products;
 
 	public long getOrderId() {
 		return orderId;
@@ -51,12 +51,12 @@ public class Order {
 		return checked;
 	}
 
-	public User getUser() {
-		return user;
+	public Users getUsers() {
+		return users;
 	}
 
-	public Product getProduct() {
-		return product;
+	public Products getProducts() {
+		return products;
 	}
 
 	public void setOrderId(long orderId) {
@@ -75,12 +75,12 @@ public class Order {
 		this.checked = checked;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsers(Users users) {
+		this.users = users;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProducts(Products products) {
+		this.products = products;
 	}
 
 }
