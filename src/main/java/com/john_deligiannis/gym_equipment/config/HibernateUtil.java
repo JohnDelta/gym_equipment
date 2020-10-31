@@ -36,7 +36,7 @@ public class HibernateUtil {
 			settings.put(Environment.PASS, "gym_equipment_password");
 			settings.put(Environment.SHOW_SQL, "true");
 			settings.put(Environment.FORMAT_SQL, "true");
-			settings.put(Environment.HBM2DDL_AUTO, "update");
+			settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 			
 			registry = new StandardServiceRegistryBuilder()
 			                                    .applySettings(settings).build();
@@ -262,6 +262,18 @@ public class HibernateUtil {
     	product10.setPhoto2("images/product10/p2.jpeg");
     	product10.setCategories(category);
     	
+    	Offers offer1 = new Offers();
+    	offer1.setProducts(product1);
+    	offer1.setPrice(product1.getPrice() - 20);
+    	
+    	Offers offer2 = new Offers();
+    	offer2.setProducts(product2);
+    	offer2.setPrice(product2.getPrice() - 12);
+    	
+    	Offers offer3 = new Offers();
+    	offer3.setProducts(product5);
+    	offer3.setPrice(product5.getPrice() - 56);
+    	
     	EntityManager em = sessionFactory.createEntityManager();
     	em.getTransaction().begin();
     	em.persist(category);
@@ -333,6 +345,24 @@ public class HibernateUtil {
     	em11.persist(product10);
     	em11.getTransaction().commit();
     	em11.close();
+    	
+    	EntityManager em12 = sessionFactory.createEntityManager();
+    	em12.getTransaction().begin();
+    	em12.persist(offer1);
+    	em12.getTransaction().commit();
+    	em12.close();
+    	
+    	EntityManager em13 = sessionFactory.createEntityManager();
+    	em13.getTransaction().begin();
+    	em13.persist(offer2);
+    	em13.getTransaction().commit();
+    	em13.close();
+    	
+    	EntityManager em14 = sessionFactory.createEntityManager();
+    	em14.getTransaction().begin();
+    	em14.persist(offer3);
+    	em14.getTransaction().commit();
+    	em14.close();
     	
     	return true;
     }
