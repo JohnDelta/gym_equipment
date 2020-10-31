@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,6 +35,18 @@ public class Products {
 	
 	@Column(name = "quantity")
 	private long quantity;
+	
+	@ManyToOne
+	@JoinColumn(name = "categoriesId", referencedColumnName = "categoriesId")
+	private Categories categories;
+
+	public Categories getCategories() {
+		return categories;
+	}
+
+	public void setCategories(Categories categories) {
+		this.categories = categories;
+	}
 
 	public long getProductsId() {
 		return productsId;
