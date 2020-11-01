@@ -41,64 +41,12 @@ function createAccountValidation(formName,errorId){
 	return true;
 }
 
-function displayLogin(error,page){
-	document.getElementById("loginDiv").innerHTML = ''+
-				'<form class="login-form" method="POST" action="index.php">'+
-						'<button class="login-cancel-btn" onclick="closeLogin()" id="closeLoginForm">X</button>'+
-						'<p class="login-form-title">Fill the form to login</p>'+
-						'<p id="login-error">'+error+'</p>'+
-						'<input type="hidden" name="page" value="'+page+'">'+
-						'<p class="login-label">Username</p>'+ 
-						'<input class="login-input" type="text" minlength="4" maxlength="40" placeholder="user" name="username" required>'+
-						'<p class="login-label">Password</p>'+
-						'<input class="login-input" type="password" minlength="4" maxlength="40" placeholder="abc123" name="password" required>'+
-						'<input class="login-btn" type="submit" value="Login" name="login">'+
-						'<a href="index.html" class="login-forgot-link">Forgot password?</a>'+
-						'<a onclick="closeLogin(),displayCreateAccount(\'\')" class="login-create-new-link">Create new account here</a>'+
-				'</form>';
-	document.getElementById("loginDiv").style.display = "flex";
-}
-
-function closeLogin(){
-	document.getElementById("loginDiv").style.display = "none";
-	document.getElementById("loginDiv").innerHTML = "";
-}
-
-function displayCreateAccount(error){
-	document.getElementById("createAccountForm").innerHTML = ''+
-			'<form class="create-account-form" method="POST" name="createAccountForm" onsubmit="return createAccountValidation(\'createAccountForm\',\'create-account-error\')" action="index.php">'+
-					'<button class="create-account-cancel-btn" onclick="closeCreateAccount()">X</button>'+
-					'<p class="create-account-form-title">Fill the form to create a new account</p>'+
-					'<p id="create-account-error">'+error+'</p>'+
-					'<p class="create-account-label">*Name</p>'+
-					'<input class="create-account-input" type="text" minlength="4" maxlength="40" name="name" placeholder="John" required>'+
-					'<p class="create-account-label">*Lastname</p>'+
-					'<input class="create-account-input" type="text" minlength="4" maxlength="40" name="lastname" placeholder="Deligiannis" required>'+
-					'<p class="create-account-label">*Username</p>'+
-					'<input class="create-account-input" type="text" minlength="4" maxlength="40" name="username" placeholder="john123" required>'+
-					'<p class="create-account-label">*password</p>'+
-					'<input class="create-account-input" type="password" minlength="4" maxlength="40" name="password" placeholder="drowssap123" required>'+
-					'<p class="create-account-label">*Email</p>'+
-					'<input class="create-account-input" type="email" name="email" placeholder="john123@hotmail.com" required>'+
-					'<p class="create-account-label">Phone</p>'+
-					'<input class="create-account-input" type="number" min="6900000000" max="6999999999" name="phone" placeholder="6901111111">'+
-					'<p class="create-account-label">City</p>'+
-					'<input class="create-account-input" type="text" minlength="4" maxlength="40" name="city" placeholder="Athens">'+
-					'<p class="create-account-label">Address</p>'+
-					'<input class="create-account-input" type="text" minlength="4" maxlength="40" name="address" placeholder="monastiraki">'+
-					'<input class="create-account-btn" type="submit" value="Create Account" name="createAccount">'+
-					'<a onclick="closeCreateAccount(), displayLogin(\'\')" class="create-account-has-account-link">Already have an account? login here</a>'+
-			'</form>';
-	document.getElementById("createAccountForm").style.display = "flex";
-}
-
-function closeCreateAccount(){
-	document.getElementById("createAccountForm").style.display = "none";
-	document.getElementById("createAccountForm").innerHTML = "";
-}
-
-function openShoppingCartPage(){
-	
+function redirectTo(url){
+	if(url === null || url === "") {
+		window.location.replace("/gym_equipment");
+	} else {
+		window.location.href = url;	
+	}
 }
 
 function closeShowProduct(){

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
 
@@ -27,8 +28,10 @@
 		
 		<%@ include file="footer.jsp" %>
 		
-		<div class="login-div" id="loginDiv"></div>
-		<div class="create-account-div" id="createAccountForm"></div>
+		<%@ include file="login.jsp" %>
+		
+		<%@ include file="create-account.jsp" %>
+		
 		<div class="show-product-div" id="showProductForm"></div>
 		
 	</body>

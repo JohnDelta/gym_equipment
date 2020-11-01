@@ -468,7 +468,7 @@ main{
 	background-color:rgba(0,0,0,0.5);
 	width:100vw;
 	height:100vh;
-	display:none;
+	display:flex;
 	justify-content:center;
 	align-items:center;
 }
@@ -518,6 +518,8 @@ main{
 	border-bottom:1px solid #DD2C00;
 	box-shadow:0px 1px 3px #DD2C00;
 	transition-duration:0.3s;
+	min-width: 35px;
+	min-height: 35px;
 }
 @media(max-width:700px){
 	.login-cancel-btn{
@@ -610,7 +612,7 @@ main{
 	background-color:rgba(0,0,0,0.5);
 	width:100vw;
 	height:100vh;
-	display:none;
+	display:flex;
 	justify-content:center;
 	align-items:center;
 }
@@ -659,6 +661,8 @@ main{
 	border-bottom:1px solid #DD2C00;
 	box-shadow:0px 1px 3px #DD2C00;
 	transition-duration:0.3s;
+	min-width: 35px;
+	min-height: 35px;
 }
 .create-account-cancel-btn:hover{
 	border-bottom:1px solid #FF5722;

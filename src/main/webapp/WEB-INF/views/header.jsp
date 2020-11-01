@@ -2,13 +2,9 @@
 
 <%
 	String profilLink = "";
-	String logForm = "<button class='user-bar-login-btn' onclick='displayLogin(\'\',\'index.php\')' >Login</button>";
 
 	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
 		profilLink = "<a class='nav-link' href='profil.php'>Profil</a>";
-		logForm = "<form method='POST' action='logout.php'>" +
-					"<input type='submit' class='user-bar-login-btn' value='Logout' name='logout'>" +
-				 "</form>";
 	}
 %>
 
@@ -25,17 +21,7 @@
 	</nav>
 </header>
 
-<div class="user-bar-div">
-	<a class="basket-div" href="shopping-cart.php">
-		<div class="basket-img"></div>
-		<p class="basket-total">
-			User : <%=session.getAttribute("username")%> | Total : <%=session.getAttribute("total")%>&euro;
-		</p>
-	</a>
-	<div class="user-bar-login">
-		<%=logForm%>
-	</div>
-</div>
+
 		
 		
 		

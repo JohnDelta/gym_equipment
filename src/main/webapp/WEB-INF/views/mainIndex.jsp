@@ -5,10 +5,27 @@
 	
 	String newUserLink = "";
 	if(Integer.parseInt(session.getAttribute("role").toString()) == 0) {
-		newUserLink = "<p>New to EComerse? click <a  class='create-btn' onclick='displayCreateAccount(\'\')'>here</a> to create a new account!</p>";
+		newUserLink = "<p>New to EComerse? click <a  class='create-btn' href='create-account?fromPage=' >here</a> to create a new account!</p>";
+	}
+	
+	String logLink = "<a class='user-bar-login-btn' href='login?fromPage=' >Login</a>";
+	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
+		logLink = "<a class='user-bar-login-btn' href='logout' >Logout</a>";
 	}
 
 %>
+
+<div class="user-bar-div">
+	<a class="basket-div" href="shopping-cart.php">
+		<div class="basket-img"></div>
+		<p class="basket-total">
+			User : <%=session.getAttribute("username")%> | Total : <%=session.getAttribute("total")%>&euro;
+		</p>
+	</a>
+	<div class="user-bar-login">
+		<%=logLink%>
+	</div>
+</div>
 
 <main>
 
