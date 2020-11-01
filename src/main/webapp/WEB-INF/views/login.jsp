@@ -8,7 +8,7 @@
 				<button class="login-cancel-btn" onclick="redirectTo('${fromPage}')" id="closeLoginForm">X</button>
 				<p class="login-form-title">Fill the form to login</p>
 				<p id="login-error">${error}</p>
-				<input type="hidden" name="page" value="${fromPage}">
+				<input type="hidden" name="fromPage" value="${fromPage}">
 				<p class="login-label">Username</p>
 				<input class="login-input" type="text" minlength="4" maxlength="40" placeholder="user" name="username" required>
 				<p class="login-label">Password</p>

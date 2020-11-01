@@ -49,65 +49,6 @@ function redirectTo(url){
 	}
 }
 
-function closeShowProduct(){
-	document.getElementById("showProductForm").style.display = "none";
-	document.getElementById("showProductForm").innerHTML = "";
-}
-
-function displayShowProduct(id_product,page){
-	/*make an ajax call, give the id_product and take the information about the product.
-	 then, display it to the page that called it(page).*/
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-			var res = JSON.parse(this.responseText);
-			var price = 0;
-			//if the product has an offer price, post it
-			if(res["offerPrice"]!==0) price = res["offerPrice"];
-			else price = res["price"];
-			//if the product is not available (quantity = 0) then disable the add btns
-			var disableAtrr = "";
-			var quantityMsg = "";
-			if(res["quantity"]<=0){
-				disableAtrr = "disabled";
-				quantityMsg = '<p class="show-product-number-desc" style="color:#F00;">Product not available</p>';
-			}
-			document.getElementById("showProductForm").innerHTML = ''+
-			'<form class="show-product-form" method="POST" action="'+page+'">'+
-					'<button class="show-product-cancel-btn" onclick="closeShowProduct()">X</button>'+
-					'<div class="show-product-form-title-div">'+
-						'<p class="show-product-form-title">Product info</p>'+
-						'<hr class="section-title-hr">'+
-					'</div>'+
-					'<img src="'+res["photo1"]+'" class="show-product-img" id="showProductImg">'+
-					'<div class="show-product-photos-div">'+
-						'<input class="show-product-select-photo" type="radio" name="showProductPhotos" id="photo1" onmouseover="showProductPhoto(\'photo1\',\''+res["photo1"]+'\')">'+
-						'<input class="show-product-select-photo" type="radio" name="showProductPhotos" id="photo2" onmouseover="showProductPhoto(\'photo2\',\''+res["photo2"]+'\')">'+
-					'</div>'+
-					'<div class="show-product-info">'+
-						'<p class="show-product-title">'+res["title"]+'</p>'+
-						'<p class="show-product-desc">'+res["description"]+'</p>'+
-						'<p class="show-product-price">Price : '+price+'&euro;</p>'+
-						'<div class="show-product-number-div">'+
-							'<p class="show-product-number-desc">Quantity  </p>'+
-							'<input type="hidden" name="id_product" value="'+id_product+'">'+
-							'<input type="hidden" name="price" value="'+price+'">'+
-							'<input type="hidden" name="addToCart" value="true">'+
-							'<input '+disableAtrr+' type="button" value="-" class="show-product-number-btn" onclick="subFromShowProductNumber()">'+
-							'<input '+disableAtrr+' type="number" value="0" readonly id="showProductNumber" class="show-product-number" name="showProductNumber"> '+
-							'<input '+disableAtrr+' type="button" value="+" class="show-product-number-btn" onclick="addToShowProductNumber(\''+res["quantity"]+'\')">'+
-							quantityMsg+
-						'</div>'+
-						'<input type="submit" '+disableAtrr+' class="show-product-add-btn" value="Add to cart">'+
-					'</div>'+
-			'</form>';
-			document.getElementById("showProductForm").style.display = "flex";
-		}
-	}
-	xhttp.open("GET","product-info.php?id_product="+id_product,true);
-	xhttp.send();
-}
-
 function showProductPhoto(radioId,imgId){
 	//imgId is the path to the photo in files
 	if(radioId==='photo1'){

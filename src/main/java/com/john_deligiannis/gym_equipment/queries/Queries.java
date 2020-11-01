@@ -13,7 +13,7 @@ public class Queries {
 	public static List<Offers> loadOffers() {
 		
 		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
-		String query = "SELECT c FROM Offers c";
+		String query = "SELECT c FROM offers c";
 	    TypedQuery<Offers> allQuery = session.createQuery(query, Offers.class);
 	    
 		return allQuery.getResultList();

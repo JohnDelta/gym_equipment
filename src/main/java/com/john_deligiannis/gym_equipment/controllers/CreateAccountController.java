@@ -1,5 +1,7 @@
 package com.john_deligiannis.gym_equipment.controllers;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.john_deligiannis.gym_equipment.config.HibernateUtil;
+import com.john_deligiannis.gym_equipment.entities.Users;
 import com.john_deligiannis.gym_equipment.queries.Queries;
 
 @Controller
@@ -34,7 +38,6 @@ public class CreateAccountController {
 		}
 		
         return mv; 
-		
 	}
 	
 	@RequestMapping(
@@ -44,11 +47,24 @@ public class CreateAccountController {
 	public ModelAndView postCreate(@RequestBody MultiValueMap<String, String> formData) {
 		
 		ModelAndView mv = new ModelAndView();
-		
-		String ans = formData.get("username").toString() + " " + formData.get("password").toString();
-		
 		mv.addObject("createAccount", "true");
-		mv.addObject("error", ans);
+		
+		Users user = new Users();
+		user.setUsername(formData.get("username").get(0));
+		user.setPassword(formData.get("password").get(0));
+		user.setName(formData.get("name").get(0));
+		user.setLastname(formData.get("lastname").get(0));
+		user.setEmail(formData.get("email").get(0));
+		user.setAddress(formData.get("address").get(0));
+		user.setCity(formData.get("city").get(0));
+		user.setPhone(formData.get("phone").get(0));
+		user.setRole(0);
+		
+		if(create(user)) {
+			mv.addObject("error", "User created");
+		} else {
+			mv.addObject("error", "Unable to create user");	
+		}
 		
 		if(formData.get("fromPage").isEmpty() || formData.get("formPage") == null) {
 			mv.addObject("fromPage", "");
@@ -60,7 +76,24 @@ public class CreateAccountController {
 		}
 		
         return mv; 
+	}
+	
+	private boolean create(Users user) {
+		boolean flag = true;
 		
+		EntityManager em = HibernateUtil.getSessionFactory().createEntityManager();
+    	em.getTransaction().begin();
+    	em.persist(user);
+    	em.getTransaction().commit();
+    	em.close();
+		
+		return flag;
 	}
 
 }
+
+
+
+
+
+

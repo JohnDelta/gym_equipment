@@ -32,7 +32,10 @@
 		
 		<%@ include file="create-account.jsp" %>
 		
-		<div class="show-product-div" id="showProductForm"></div>
+		<%@ include file="product.jsp" %>
 		
 	</body>
 </html>
+
+
+

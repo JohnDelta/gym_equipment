@@ -57,10 +57,10 @@
 							Price : ${offer.getPrice()} &euro;<span style="font-size:14px;"> 
 							from  ${offer.getProducts().getPrice()} &euro;</span>
 						</p>
-						<button class="product-btn" onclick="displayShowProduct('id product', 'index.jsp')">
+						<a class="product-btn" href="product?offersId=${offer.getProducts().getProductsId()}">
 							See product >>
 							<span class="arrow">></span>
-						</button>
+						</a>
 					</div>
 				</c:forEach>
 			</c:if>

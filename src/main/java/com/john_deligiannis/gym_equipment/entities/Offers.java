@@ -9,8 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "offers")
+@Entity(name = "offers")
+@Table
 public class Offers {
 
 	@Id
