@@ -40,8 +40,16 @@
 						<p class="product-title"> ${product.getTitle()} </p>
 						<p class="product-desc"> ${product.getDescription()} </p>
 						<p class="product-price">
-							Price : ${product.getPrice()} &euro;<span style="font-size:14px;"> 
+						
+						<c:if test="${not empty product.getOfferPrice()}">
+							Price : ${product.getOfferPrice()} &euro;<span style="font-size:14px;"> 
 							from  ${product.getPrice()} &euro;</span>
+						</c:if>
+						
+						<c:if test="${empty product.getOfferPrice()}">
+							Price : ${product.getPrice()} &euro;
+						</c:if>
+						
 						</p>
 						<a class="product-btn" href="products?productsId=${product.getProductsId()}">
 							See product >>

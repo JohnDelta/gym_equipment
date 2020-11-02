@@ -19,7 +19,7 @@ public class ProductController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("LOAD_PANEL", "PRODUCTS");
-		mv.addObject("PRODUCTS", Queries.loadProducts());
+		mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
 		mv.setViewName("index");
 		
         return mv; 
