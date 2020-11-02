@@ -14,7 +14,7 @@ public class IndexController {
     public ModelAndView showDefault() {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("offers", Queries.loadOffers());
+		mv.addObject("OFFERS", Queries.loadOffers());
         mv.setViewName("index");
         
         return mv; 

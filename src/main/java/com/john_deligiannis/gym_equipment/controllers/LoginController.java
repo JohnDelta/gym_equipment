@@ -2,14 +2,15 @@ package com.john_deligiannis.gym_equipment.controllers;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.john_deligiannis.gym_equipment.config.HibernateUtil;
@@ -20,50 +21,61 @@ import com.john_deligiannis.gym_equipment.queries.Queries;
 public class LoginController {
 	
 	@RequestMapping(
-			value = "/login",
-			method = RequestMethod.GET)
-	public ModelAndView getLogin(@RequestParam(value = "fromPage", required = false) String fromPage) {
+			value = {"/login", "/{fromView}/login"},
+			method = RequestMethod.GET
+	)
+	public ModelAndView getLogin(
+			@PathVariable(value = "fromView", required = false) String fromView,
+			HttpSession session
+	) {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("login", "true");
-		mv.addObject("error", "");
+		if(Integer.parseInt(session.getAttribute("role").toString()) != 1) {
+			mv.addObject("LOAD_LOGIN", "TRUE");
+			mv.addObject("ERROR", "");	
+		}
 		
-		if(fromPage.isEmpty()) {
-			mv.addObject("fromPage", "");
-			mv.addObject("offers", Queries.loadOffers());
+		if(fromView == null || fromView.isEmpty()) {
+			mv.addObject("OFFERS", Queries.loadOffers());
+			mv.addObject("FROM_VIEW", fromView);
 			mv.setViewName("index");
-		} else { // here load login for other views later
-			mv.addObject("fromPage", fromPage);
-			mv.setViewName(fromPage);
+		} else {
+			
 		}
 		
         return mv; 
 	}
 
 	@RequestMapping(
-			value = "/login",
+			value = {"/login", "/{fromView}/login"},
 			method = RequestMethod.POST,
-			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-	public ModelAndView postLogin(@RequestBody MultiValueMap<String, String> formData) {
+			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+	)
+	public ModelAndView postLogin(
+			@PathVariable(value = "fromView", required = false) String fromView,
+			@RequestBody MultiValueMap<String, String> formData,
+			HttpSession session
+	) {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("login", "true");
 		
 		Users user = login(formData.get("username").get(0), formData.get("password").get(0));
+		
 		if(user != null) {
-			mv.addObject("error", "Welcome");
+			session.setAttribute("username", user.getUsername());
+			session.setAttribute("role", user.getRole());
 		} else {
-			mv.addObject("error", "Unable to login");
+			mv.addObject("LOAD_LOGIN", "TRUE");
+			mv.addObject("ERROR", "Unable to login");
 		}
 		
-		if(formData.get("fromPage").isEmpty() || formData.get("formPage") == null) {
-			mv.addObject("fromPage", "");
-			mv.addObject("offers", Queries.loadOffers());
+		if(fromView == null || fromView.isEmpty()) {
+			mv.addObject("OFFERS", Queries.loadOffers());
+			mv.addObject("FROM_VIEW", fromView);
 			mv.setViewName("index");
-		} else { // here load login for other views later
-			mv.addObject("fromPage", formData.get("fromPage"));
-			mv.setViewName("");
+		} else {
+			
 		}
 		
         return mv; 	

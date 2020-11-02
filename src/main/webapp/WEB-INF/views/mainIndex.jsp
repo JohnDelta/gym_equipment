@@ -5,10 +5,10 @@
 	
 	String newUserLink = "";
 	if(Integer.parseInt(session.getAttribute("role").toString()) == 0) {
-		newUserLink = "<p>New to EComerse? click <a  class='create-btn' href='create-account?fromPage=' >here</a> to create a new account!</p>";
+		newUserLink = "<p>New to EComerse? click <a  class='create-btn' href='create-account' >here</a> to create a new account!</p>";
 	}
 	
-	String logLink = "<a class='user-bar-login-btn' href='login?fromPage=' >Login</a>";
+	String logLink = "<a class='user-bar-login-btn' href='login' >Login</a>";
 	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
 		logLink = "<a class='user-bar-login-btn' href='logout' >Logout</a>";
 	}
@@ -47,8 +47,8 @@
 		<hr class="section-title-hr">
 		<div class="products">
 		
-			<c:if test="${not empty offers}">
-				<c:forEach var="offer" items="${offers}">
+			<c:if test="${not empty OFFERS}">
+				<c:forEach var="offer" items="${OFFERS}">
 					<div class="product">';
 						<img class="product-img" src="${offer.getProducts().getPhoto1()}">
 						<p class="product-title"> ${offer.getProducts().getTitle()} </p>
@@ -65,7 +65,7 @@
 				</c:forEach>
 			</c:if>
 			
-			<c:if test="${empty offers}">
+			<c:if test="${empty OFFERS}">
 				No offers available
 			</c:if>
 	
