@@ -17,14 +17,16 @@ import com.john_deligiannis.gym_equipment.queries.Queries;
 public class OfferController {
 	
 	@RequestMapping(
-			value = "/product",
-			method = RequestMethod.GET)
+			value = "/offer",
+			method = RequestMethod.GET
+	)
 	public ModelAndView getOffer(@RequestParam("offersId") long offersId) {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("fromPage", "");
-		mv.addObject("loadedOffer", loadOffer(offersId));
-		mv.addObject("offers", Queries.loadOffers());
+		
+		mv.addObject("OFFERS", Queries.loadOffers());
+		mv.addObject("OFFER", loadOffer(offersId));
+		mv.addObject("LOAD_PANEL", "MAIN");
 		mv.setViewName("index");
 		
         return mv; 

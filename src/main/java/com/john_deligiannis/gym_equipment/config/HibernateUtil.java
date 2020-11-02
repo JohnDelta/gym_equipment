@@ -34,7 +34,7 @@ public class HibernateUtil {
 				"&serverTimezone=UTC");
 			settings.put(Environment.USER, "gym_equipment_user");
 			settings.put(Environment.PASS, "gym_equipment_password");
-			settings.put(Environment.SHOW_SQL, "true");
+			settings.put(Environment.SHOW_SQL, "false");
 			settings.put(Environment.FORMAT_SQL, "true");
 			settings.put(Environment.HBM2DDL_AUTO, "create-drop");
 			

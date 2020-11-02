@@ -39,6 +39,7 @@ public class LoginController {
 		if(fromView == null || fromView.isEmpty()) {
 			mv.addObject("OFFERS", Queries.loadOffers());
 			mv.addObject("FROM_VIEW", fromView);
+			mv.addObject("LOAD_PANEL", "MAIN");
 			mv.setViewName("index");
 		} else {
 			

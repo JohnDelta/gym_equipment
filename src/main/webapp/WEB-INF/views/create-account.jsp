@@ -4,7 +4,7 @@
 <c:if test="${not empty LOAD_CREATE_ACCOUNT}">
 
 	<div class="create-account-div" id="createAccountForm">
-		<form class="create-account-form" method="POST" name="createAccountForm" onsubmit="return createAccountValidation(\'createAccountForm\',\'create-account-error\')" action="create-account">
+		<form class="create-account-form" method="POST" name="createAccountForm" action="create-account">
 				<button class="create-account-cancel-btn" onclick="redirectTo('${FROM_VIEW}')">X</button>
 				<p class="create-account-form-title">Fill the form to create a new account</p>
 				<p id="create-account-error">${ERROR}</p>

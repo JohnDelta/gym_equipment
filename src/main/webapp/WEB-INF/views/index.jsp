@@ -18,13 +18,26 @@
 		<script src="resources/main.js"></script>
 		<meta charset="ISO-8859-1">
 		<link rel="stylesheet" type="text/css" href="resources/style.css">
-		<title>Gym Equipment | Home</title>
+		
+		<c:if test="${LOAD_PANEL == 'PRODUCTS'}">
+			<title>Gym Equipment | Products</title>
+		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'MAIN'}">
+			<title>Gym Equipment | Home</title>
+		</c:if>
 	</head>
 	<body>
 	
 		<%@ include file="header.jsp" %>
 		
-		<%@ include file="mainIndex.jsp" %>
+		<c:if test="${LOAD_PANEL == 'PRODUCTS'}">
+			<%@ include file="products-panel.jsp" %>
+		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'MAIN'}">
+			<%@ include file="main-panel.jsp" %>
+		</c:if>
 		
 		<%@ include file="footer.jsp" %>
 		

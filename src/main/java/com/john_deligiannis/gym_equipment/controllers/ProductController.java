@@ -8,17 +8,27 @@ import org.springframework.web.servlet.ModelAndView;
 import com.john_deligiannis.gym_equipment.queries.Queries;
 
 @Controller
-public class IndexController {
+public class ProductController {
 
-	@RequestMapping(value="/", method=RequestMethod.GET)
-    public ModelAndView showDefault() {
+	@RequestMapping(
+			value = "/products",
+			method = RequestMethod.GET
+	)
+	public ModelAndView getOffer() {
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("OFFERS", Queries.loadOffers());
-		mv.addObject("LOAD_PANEL", "MAIN");
-        mv.setViewName("index");
-        
+		
+		mv.addObject("LOAD_PANEL", "PRODUCTS");
+		mv.addObject("PRODUCTS", Queries.loadProducts());
+		mv.setViewName("index");
+		
         return mv; 
-    }
+	}
 	
 }
+
+
+
+
+
+

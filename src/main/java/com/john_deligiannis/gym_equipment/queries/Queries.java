@@ -7,16 +7,24 @@ import javax.persistence.TypedQuery;
 
 import com.john_deligiannis.gym_equipment.config.HibernateUtil;
 import com.john_deligiannis.gym_equipment.entities.Offers;
+import com.john_deligiannis.gym_equipment.entities.Products;
 
 public class Queries {
 
 	public static List<Offers> loadOffers() {
 		
 		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
-		String query = "SELECT c FROM offers c";
-	    TypedQuery<Offers> allQuery = session.createQuery(query, Offers.class);
+	    TypedQuery<Offers> query = session.createQuery("SELECT c FROM offers c", Offers.class);
+	   
+		return query.getResultList();
+	}
+	
+	public static List<Products> loadProducts() {
+		
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<Products> query = session.createQuery("SELECT c FROM products c", Products.class);
 	    
-		return allQuery.getResultList();
+		return query.getResultList();
 	}
 	
 }

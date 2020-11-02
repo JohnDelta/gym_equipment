@@ -4,48 +4,11 @@ $(document).ready(function(){
 	
 });
 
-function createAccountValidation(formName,errorId){
-	var username = document.forms[formName].username.value;
-	var password = document.forms[formName].password.value;
-	var name = document.forms[formName].name.value;
-	var lastname = document.forms[formName].lastname.value;
-	var phone = document.forms[formName].phone.value;
-	var email = document.forms[formName].email.value;
-	var city = document.forms[formName].city.value;
-	var address = document.forms[formName].address.value;
-	
-	if(/^[a-zA-Z]+[a-zA-Z0-9]*$/.test(username)===false){
-		document.getElementById(errorId).innerHTML = "Username starts with letters and can not contain symbols";
-		return false;
-	}
-	if(/^[a-zA-Z0-9]+$/.test(password)===false){
-		document.getElementById(errorId).innerHTML = "Password can not contain symbols";
-		return false;
-	}
-	if(/^[a-zA-Zα-ζΑ-ΖάίόέύώήΆΈΎΊΌΉΏ]+$/.test(name)===false){
-		document.getElementById(errorId).innerHTML = "Name must contain only letters";
-		return false;
-	}
-	if(/^[a-zA-Zα-ζΑ-ΖάίόέύώήΆΈΎΊΌΉΏ]+$/.test(lastname)===false){
-		document.getElementById(errorId).innerHTML = "Lastname must contain only letters";
-		return false;
-	}
-	if(city!=="" && /^[a-zA-Zα-ζΑ-ΖάίόέύώήΆΈΎΊΌΉΏ]+[a-zA-Zα-ζΑ-ΖάίόέύώήΆΈΎΊΌΉΏ ]*$/.test(city)===false){
-		document.getElementById(errorId).innerHTML = "City must contain only letters and space";
-		return false;
-	}
-	if(address!=="" && /[a-zA-Zα-ζΑ-ΖάίόέύώήΆΈΎΊΌΉΏ]+[a-zA-Zα-ζΑ-ΖάίόέύώήΆΈΎΊΌΉΏ0-9 ]*$/.test(address)===false){
-		document.getElementById(errorId).innerHTML = "address must contain only letters, numbers and space";
-		return false;
-	}
-	return true;
-}
-
 function redirectTo(url){
-	if(url === null || url === "") {
+	if(url === null || url === "" || url === "/") {
 		window.location.replace("/gym_equipment");
 	} else {
-		window.location.href = url;	
+		window.location.replace("/gym_equipment/"+url);
 	}
 }
 

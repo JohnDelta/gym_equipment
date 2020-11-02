@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
 	String profilLink = "";
 
 	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
-		profilLink = "<a class='nav-link' href='profil.php'>Profil</a>";
+		profilLink = "<a class='nav-link' href='profil'>Profil</a>";
 	}
 %>
 
@@ -15,9 +16,17 @@
 	
 	<button class="nav-btn">&#9776;</button>
 	<nav>
-		<a class="nav-link nav-selected" href="index.php">Home</a>
-		<a class="nav-link" href="products.php">Products</a>
-		<%=profilLink%>
+		<c:if test="${LOAD_PANEL == 'PRODUCTS'}">
+			<a class="nav-link" href="/gym_equipment/">Home</a>
+			<a class="nav-link nav-selected" href="/gym_equipment/products">Products</a>
+		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'MAIN'}">
+			<a class="nav-link nav-selected" href="/gym_equipment/">Home</a>
+			<a class="nav-link" href="/gym_equipment/products">Products</a>
+		</c:if>
+		
+		<%=profilLink%> 
 	</nav>
 </header>
 

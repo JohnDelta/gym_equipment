@@ -49,7 +49,7 @@
 		
 			<c:if test="${not empty OFFERS}">
 				<c:forEach var="offer" items="${OFFERS}">
-					<div class="product">';
+					<div class="product">
 						<img class="product-img" src="${offer.getProducts().getPhoto1()}">
 						<p class="product-title"> ${offer.getProducts().getTitle()} </p>
 						<p class="product-desc"> ${offer.getProducts().getDescription()} </p>
@@ -57,7 +57,7 @@
 							Price : ${offer.getPrice()} &euro;<span style="font-size:14px;"> 
 							from  ${offer.getProducts().getPrice()} &euro;</span>
 						</p>
-						<a class="product-btn" href="product?offersId=${offer.getProducts().getProductsId()}">
+						<a class="product-btn" href="offer?offersId=${offer.getOffersId()}">
 							See product >>
 							<span class="arrow">></span>
 						</a>
