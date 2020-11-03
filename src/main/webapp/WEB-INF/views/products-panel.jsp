@@ -3,7 +3,7 @@
 
 <%
 	
-	String logLink = "<a class='user-bar-login-btn' href='login' >Login</a>";
+	String logLink = "<a class='user-bar-login-btn' href='products/login' >Login</a>";
 	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
 		logLink = "<a class='user-bar-login-btn' href='logout' >Logout</a>";
 	}
@@ -36,7 +36,7 @@
 			<c:if test="${not empty PRODUCTS}">
 				<c:forEach var="product" items="${PRODUCTS}">
 					<div class="product">
-						<img class="product-img" src="${product.getPhoto1()}">
+						<img class="product-img" src="<c:url value="${product.getPhoto1()}"/>" >
 						<p class="product-title"> ${product.getTitle()} </p>
 						<p class="product-desc"> ${product.getDescription()} </p>
 						<p class="product-price">

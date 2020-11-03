@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,12 +21,12 @@ import com.john_deligiannis.gym_equipment.queries.Queries;
 public class LoginController {
 	
 	@RequestMapping(
-			value = {"/login", "/{fromView}/login"},
+			value = {"{fromView}/login"},
 			method = RequestMethod.GET
 	)
 	public ModelAndView getLogin(
-			@PathVariable(value = "fromView", required = false) String fromView,
-			HttpSession session
+			HttpSession session,
+			@RequestParam(value = "fromView", required = false) String fromView
 	) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -38,25 +38,28 @@ public class LoginController {
 		
 		if(fromView == null || fromView.isEmpty()) {
 			mv.addObject("OFFERS", Queries.loadOffers());
-			mv.addObject("FROM_VIEW", fromView);
-			mv.addObject("LOAD_PANEL", "MAIN");
-			mv.setViewName("index");
+			mv.addObject("FROM_VIEW", "");
+			mv.addObject("LOAD_PANEL", "MAIN");	
 		} else {
-			
+			mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
+			mv.addObject("FROM_VIEW", "products");
+			mv.addObject("LOAD_PANEL", "PRODUCTS");
 		}
+		
+		mv.setViewName("index");
 		
         return mv; 
 	}
 
 	@RequestMapping(
-			value = {"/login", "/{fromView}/login"},
+			value = {"{fromView}/login"},
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
 	)
 	public ModelAndView postLogin(
-			@PathVariable(value = "fromView", required = false) String fromView,
 			@RequestBody MultiValueMap<String, String> formData,
-			HttpSession session
+			HttpSession session,
+			@RequestParam(value = "fromView", required = false) String fromView
 	) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -73,10 +76,12 @@ public class LoginController {
 		
 		if(fromView == null || fromView.isEmpty()) {
 			mv.addObject("OFFERS", Queries.loadOffers());
-			mv.addObject("FROM_VIEW", fromView);
-			mv.setViewName("index");
+			mv.addObject("FROM_VIEW", "");
+			mv.addObject("LOAD_PANEL", "MAIN");	
 		} else {
-			
+			mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
+			mv.addObject("FROM_VIEW", "products");
+			mv.addObject("LOAD_PANEL", "PRODUCTS");
 		}
 		
         return mv; 	

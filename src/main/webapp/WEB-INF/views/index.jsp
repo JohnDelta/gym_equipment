@@ -14,10 +14,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script src="resources/jquery-3.3.js"></script>
-		<script src="resources/main.js"></script>
+		<script src="<c:url value="/resources/jquery-3.3.js"/>"></script>
+		<script src="<c:url value="/resources/main.js"/>"></script>
 		<meta charset="ISO-8859-1">
-		<link rel="stylesheet" type="text/css" href="resources/style.css">
+		<link rel="stylesheet" type="text/css" href="<c:url value="/resources/style.css"/>">
 		
 		<c:if test="${LOAD_PANEL == 'PRODUCTS'}">
 			<title>Gym Equipment | Products</title>

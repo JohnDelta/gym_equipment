@@ -50,7 +50,7 @@
 			<c:if test="${not empty OFFERS}">
 				<c:forEach var="offer" items="${OFFERS}">
 					<div class="product">
-						<img class="product-img" src="${offer.getProducts().getPhoto1()}">
+						<img class="product-img" src="<c:url value="${offer.getProducts().getPhoto1()}"/>">
 						<p class="product-title"> ${offer.getProducts().getTitle()} </p>
 						<p class="product-desc"> ${offer.getProducts().getDescription()} </p>
 						<p class="product-price">
