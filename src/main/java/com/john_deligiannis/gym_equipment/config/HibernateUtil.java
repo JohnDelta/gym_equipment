@@ -98,8 +98,8 @@ public class HibernateUtil {
     			+ " το μαξιλάρι δικεφάλων και το κιτ πεταλούδας δεν περιλαμβάνονται.\r\n");
     	product1.setPrice(125);
     	product1.setQuantity(4);
-    	product1.setPhoto1("images/product1/p1.jpg");
-    	product1.setPhoto2("images/product1/p2.jpg");
+    	product1.setPhoto1("/images/product1/p1.jpg");
+    	product1.setPhoto2("/images/product1/p2.jpg");
     	product1.setCategories(category);
     	
     	Products product2 = new Products();
@@ -117,8 +117,8 @@ public class HibernateUtil {
     			"");
     	product2.setPrice(185);
     	product2.setQuantity(4);
-    	product2.setPhoto1("images/product2/p1.jpg");
-    	product2.setPhoto2("images/product2/p2.jpg");
+    	product2.setPhoto1("/images/product2/p1.jpg");
+    	product2.setPhoto2("/images/product2/p2.jpg");
     	product2.setCategories(category);
     	
     	Products product3 = new Products();
@@ -135,8 +135,8 @@ public class HibernateUtil {
     			"Εγγύηση: 2 χρόνια (εφαιρούνται ταπετσαρίες και συρματόσχοινο)");
     	product3.setPrice(208);
     	product3.setQuantity(4);
-    	product3.setPhoto1("images/product3/p1.jpeg");
-    	product3.setPhoto2("images/product3/p2.jpeg");
+    	product3.setPhoto1("/images/product3/p1.jpeg");
+    	product3.setPhoto2("/images/product3/p2.jpeg");
     	product3.setCategories(category);
     	
     	Products product4 = new Products();
@@ -157,8 +157,8 @@ public class HibernateUtil {
     			+ " : 1η κούτα 203/42/21, 2η κούτα 113/104/15\r\n");
     	product4.setPrice(617);
     	product4.setQuantity(4);
-    	product4.setPhoto1("images/product4/p1.jpeg");
-    	product4.setPhoto2("images/product4/p2.jpg");
+    	product4.setPhoto1("/images/product4/p1.jpeg");
+    	product4.setPhoto2("/images/product4/p2.jpg");
     	product4.setCategories(category);
     	
     	Products product5 = new Products();
@@ -170,8 +170,8 @@ public class HibernateUtil {
     			+ " Μέγιστο βάρος χρήστη : 115 kg. Oδηγίες χρήσης : Περιλαμβάνονται\r\n");
     	product5.setPrice(449);
     	product5.setQuantity(4);
-    	product5.setPhoto1("images/product5/p1.jpeg");
-    	product5.setPhoto2("images/product5/p2.jpg");
+    	product5.setPhoto1("/images/product5/p1.jpeg");
+    	product5.setPhoto2("/images/product5/p2.jpg");
     	product5.setCategories(category);
     	
     	Products product6 = new Products();
@@ -190,8 +190,8 @@ public class HibernateUtil {
     			+ " 100 kg. Πιέσεις πλάτης: 95 kg\r\n");
     	product6.setPrice(784);
     	product6.setQuantity(4);
-    	product6.setPhoto1("images/product6/p1.jpeg");
-    	product6.setPhoto2("images/product6/p2.jpeg");
+    	product6.setPhoto1("/images/product6/p1.jpeg");
+    	product6.setPhoto2("/images/product6/p2.jpeg");
     	product6.setCategories(category);
     	
     	Products product7 = new Products();
@@ -210,8 +210,8 @@ public class HibernateUtil {
     			+ " 4 παλινδρομικά ρουλεμάν επαγγ/κού τύπου, για άψογη επαγγ/κή ροή (επιπλέον κόστος 150,00€)\r\n");
     	product7.setPrice(665);
     	product7.setQuantity(4);
-    	product7.setPhoto1("images/product7/p1.jpeg");
-    	product7.setPhoto2("images/product7/p2.jpg");
+    	product7.setPhoto1("/images/product7/p1.jpeg");
+    	product7.setPhoto2("/images/product7/p2.jpg");
     	product7.setCategories(category);
     	
     	Products product8 = new Products();
@@ -221,8 +221,8 @@ public class HibernateUtil {
     			+ " 150kg, Διαστάσεις: 183x106x115~147cm, Βάρος: 36kg\r\n");
     	product8.setPrice(223.50);
     	product8.setQuantity(4);
-    	product8.setPhoto1("images/product8/p1.jpg");
-    	product8.setPhoto2("images/product8/p2.jpg");
+    	product8.setPhoto1("/images/product8/p1.jpg");
+    	product8.setPhoto2("/images/product8/p2.jpg");
     	product8.setCategories(category);
     	
     	Products product9 = new Products();
@@ -232,8 +232,8 @@ public class HibernateUtil {
     			+ " απαιτήσεων αλλά και για χρήση σε studios, συλλόγους ή ξενοδοχεία.\r\n");
     	product9.setPrice(2000);
     	product9.setQuantity(4);
-    	product9.setPhoto1("images/product9/p1.jpeg");
-    	product9.setPhoto2("images/product9/p2.jpeg");
+    	product9.setPhoto1("/images/product9/p1.jpeg");
+    	product9.setPhoto2("/images/product9/p2.jpeg");
     	product9.setCategories(category);
     	
     	Products product10 = new Products();
@@ -258,8 +258,8 @@ public class HibernateUtil {
     			"- Διαστάσεις (Συναρμολογημένο): 168 (Μ) x 100 (Π) x 210 (Υ) εκατοστά");
     	product10.setPrice(399);
     	product10.setQuantity(4);
-    	product10.setPhoto1("images/product10/p1.jpg");
-    	product10.setPhoto2("images/product10/p2.jpeg");
+    	product10.setPhoto1("/images/product10/p1.jpg");
+    	product10.setPhoto2("/images/product10/p2.jpeg");
     	product10.setCategories(category);
     	
     	Offers offer1 = new Offers();

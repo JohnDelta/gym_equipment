@@ -13,7 +13,7 @@
 			<p class="login-label">Password</p>
 			<input class="login-input" type="password" minlength="4" maxlength="40" placeholder="abc123" name="password" required>
 			<input class="login-btn" type="submit" value="Login" name="login">
-			<a onclick="redirectTo('${FROM_VIEW}/create-account')" class="login-create-new-link">Create new account here</a>
+			<a onclick="redirectTo('create-account')" class="login-create-new-link">Create new account here</a>
 		</form>
 	</div>	
 
