@@ -9,6 +9,7 @@ import com.john_deligiannis.gym_equipment.config.HibernateUtil;
 import com.john_deligiannis.gym_equipment.dto.ProductsAndTheirOffer;
 import com.john_deligiannis.gym_equipment.entities.Offers;
 import com.john_deligiannis.gym_equipment.entities.Products;
+import com.john_deligiannis.gym_equipment.entities.Users;
 
 public class Queries {
 
@@ -79,6 +80,23 @@ public class Queries {
 	    query.setParameter("productsId", productsId);
 
 		return query.getSingleResult();
+	}
+	
+	public static Users loadUserByUsername(String username) {
+		
+		Users user = null;
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<Users> query = session.createQuery(
+	    		"SELECT u FROM users u WHERE u.username = :username", 
+	    		Users.class
+	    );
+	    query.setParameter("username", username);
+		user = query.getSingleResult();
+		if(user != null) {
+			user.setPassword("");
+		}
+		
+		return user;
 	}
 	
 }

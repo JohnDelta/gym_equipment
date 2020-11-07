@@ -1,16 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-
-	if(session.getAttribute("username") == null) {
-		session.setAttribute("username", "Guest");
-		session.setAttribute("total", "0");
-		session.setAttribute("role", "0");
-	}
-
-%>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -37,6 +27,10 @@
 		
 		<c:if test="${LOAD_PANEL == 'MAIN'}">
 			<%@ include file="main-panel.jsp" %>
+		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'SHOPPING_CART'}">
+			<%@ include file="shopping-cart-panel.jsp" %>
 		</c:if>
 		
 		<%@ include file="footer.jsp" %>
