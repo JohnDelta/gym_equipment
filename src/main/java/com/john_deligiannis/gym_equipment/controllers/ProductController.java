@@ -1,5 +1,7 @@
 package com.john_deligiannis.gym_equipment.controllers;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +17,14 @@ public class ProductController {
 			value = "/products",
 			method = RequestMethod.GET
 	)
-	public ModelAndView getOffer(
-			@RequestParam(value = "productsId", required = false) Long productsId		
+	public ModelAndView getProducts(
+			@RequestParam(value = "productsId", required = false) Long productsId,
+			HttpSession session
 	) {
+		
+		if(session.getAttribute("username") == null) {
+			new InitializeSession().init(session);
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		

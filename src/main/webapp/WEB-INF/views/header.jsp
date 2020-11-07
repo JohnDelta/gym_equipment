@@ -1,14 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	String profilLink = "";
-
-	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
-		profilLink = "<a class='nav-link' href='profil'>Profil</a>";
-	}
-%>
-
 <header>
 	<div class="title-div">
 		<h1><span>Gym</span>Equipment</h1>
@@ -26,7 +18,14 @@
 			<a class="nav-link" href="/gym_equipment/products">Products</a>
 		</c:if>
 		
-		<%=profilLink%> 
+		<c:if test="${LOAD_PANEL == 'SHOPPING_CART'}">
+			<a class="nav-link" href="/gym_equipment/">Home</a>
+			<a class="nav-link" href="/gym_equipment/products">Products</a>
+		</c:if>
+		
+		<c:if test="${sessionScope.role == 1}">
+			<a class='nav-link' href='profil'>Profil</a>
+		</c:if>
 	</nav>
 </header>
 

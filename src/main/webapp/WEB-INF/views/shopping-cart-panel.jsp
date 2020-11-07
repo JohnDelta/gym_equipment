@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	String logLink = "<a class='user-bar-login-btn' href='products/login' >Login</a>";
-	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
-		logLink = "<a class='user-bar-login-btn' href='logout' >Logout</a>";
-	}
-%>
-
 <div class="user-bar-div">
-	<a class="basket-div" href="shopping-cart.php">
+	<a class="basket-div" href="shopping-cart">
 		<div class="basket-img"></div>
 		<p class="basket-total">
-			User : <%=session.getAttribute("username")%> | Total : <%=session.getAttribute("total")%>&euro;
+			User : <c:out value="${sessionScope.username}"></c:out> | Total : <c:out value="${sessionScope.total}"></c:out>&euro;
 		</p>
 	</a>
 	<div class="user-bar-login">
-		<%=logLink%>
+
+		<c:if test="${sessionScope.role == 1}">
+			<a class='user-bar-login-btn' href='logout' >Logout</a>
+		</c:if>
+		
+		<c:if test="${sessionScope.role == 0}">
+			<a class='user-bar-login-btn' href='products/login' >Login</a>
+		</c:if>
+		
 	</div>
 </div>
 
@@ -66,17 +67,17 @@
 					
 					<c:if test="${empty USER}">
 						<p class="profil-label">Name</p>
-						<input id="name" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="name" readonly value="${USER.getName()}" required>
+						<input id="name" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="name" value="" required>
 						<p class="profil-label">Lastname</p>
-						<input id="lastname" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="lastname" readonly value="${USER.getLastname()}" required>
+						<input id="lastname" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="lastname" value="" required>
 						<p class="profil-label">E-mail</p>
-						<input id="email" form="sendOrderForm" maxlength="40" class="profil-input" type="email" name="email" readonly value="${USER.getEmail()}" required>
+						<input id="email" form="sendOrderForm" maxlength="40" class="profil-input" type="email" name="email" value="" required>
 						<p class="profil-label">Phone</p>
-						<input id="phone" form="sendOrderForm" maxlength="10" min="6900000000" max="6999999999" class="profil-input" type="number" name="phone" value="${USER.getPhone()}" required>
+						<input id="phone" form="sendOrderForm" maxlength="10" min="6900000000" max="6999999999" class="profil-input" type="number" name="phone" value="" required>
 						<p class="profil-label">City</p>
-						<input id="city" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="city" value="${USER.getCity()}" required>
+						<input id="city" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="city" value="" required>
 						<p class="profil-label">Address</p>
-						<input id="address" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="address" value="${USER.getAddress()}" required>
+						<input id="address" form="sendOrderForm" maxlength="40" class="profil-input" type="text" name="address" value="" required>
 					</c:if>
 				</div>
 			</div>
@@ -108,12 +109,20 @@
 									</div>
 								</div>
 							</c:forEach>
+							
 							<form id="shoppingCartRefreshForm" method="POST" action="shopping-cart.php">
 								<input type="hidden" name="shoppingCartRefresh" value="true">
 								<input type="submit" class="shopping-cart-refresh-btn" value="Refresh Cart">
 							</form>
 							<p class="profil-label" style="margin:2px;">Τρόπος αποστολής</p>
 							<select class="profil-input"><option>Αντικαταβολή</option></select>
+							
+							<form method="POST" action="shopping-cart.php" id="sendOrderForm">
+								<p class="shopping-cart-total-price">
+									Total Price : <c:out value="${sessionScope.total}"></c:out>&euro;
+								</p>
+								<input type="submit" class="shopping-cart-send-btn" value="Send Order">
+							</form>
 						</c:if>
 						
 						<c:if test="${empty CART}">
@@ -121,10 +130,6 @@
 						</c:if>
 						
 					</div>
-					<form method="POST" action="shopping-cart.php" id="sendOrderForm">
-						<p class="shopping-cart-total-price">Total Price : '.$_SESSION["total"].'&euro;</p>
-						<input type="submit" class="shopping-cart-send-btn" value="Send Order">
-					</form>
 				</div>
 			</div>
 		</div>

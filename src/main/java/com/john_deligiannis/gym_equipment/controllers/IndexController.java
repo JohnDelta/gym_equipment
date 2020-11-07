@@ -16,9 +16,7 @@ public class IndexController {
     public ModelAndView showDefault(HttpSession session) {
 		
 		if(session.getAttribute("username") == null) {
-			session.setAttribute("username", "Guest");
-			session.setAttribute("total", "0");
-			session.setAttribute("role", "0");
+			new InitializeSession().init(session);
 		}
 		
 		ModelAndView mv = new ModelAndView();

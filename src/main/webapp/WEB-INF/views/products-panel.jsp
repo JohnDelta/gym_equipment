@@ -1,24 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<%
-	
-	String logLink = "<a class='user-bar-login-btn' href='products/login' >Login</a>";
-	if(Integer.parseInt(session.getAttribute("role").toString()) == 1) {
-		logLink = "<a class='user-bar-login-btn' href='logout' >Logout</a>";
-	}
-
-%>
-
 <div class="user-bar-div">
-	<a class="basket-div" href="shopping-cart.php">
+	<a class="basket-div" href="shopping-cart">
 		<div class="basket-img"></div>
 		<p class="basket-total">
-			User : <%=session.getAttribute("username")%> | Total : <%=session.getAttribute("total")%>&euro;
+			User : <c:out value="${sessionScope.username}"></c:out> | Total : <c:out value="${sessionScope.total}"></c:out>&euro;
 		</p>
 	</a>
 	<div class="user-bar-login">
-		<%=logLink%>
+		
+		<c:if test="${sessionScope.role == 1}">
+			<a class='user-bar-login-btn' href='logout' >Logout</a>
+		</c:if>
+		
+		<c:if test="${sessionScope.role == 0}">
+			<a class='user-bar-login-btn' href='products/login' >Login</a>
+		</c:if>
+
 	</div>
 </div>
 
