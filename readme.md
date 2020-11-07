@@ -16,7 +16,7 @@ E-shop selling gym equipment created using the Spring MVC framework
 
 ## dependencies
 - spring-webmvc
-- jstl-api
+- jstl-api | jstl
 - jsp-api
 - commons-logging
 - mysql-connector-java

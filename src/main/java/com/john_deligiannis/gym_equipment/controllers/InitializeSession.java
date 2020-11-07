@@ -8,7 +8,7 @@ public class InitializeSession {
 	
 	public void init(HttpSession session) {
 		session.setAttribute("username", "Guest");
-		session.setAttribute("total", "0");
+		session.setAttribute("total", "0.0");
 		session.setAttribute("role", "0");
 		session.setAttribute("cart", new HashMap<Long, Long>());
 	}

@@ -25,7 +25,7 @@ function showProductPhoto(radioId,imgId){
 
 function subFromShowProductNumber(){
 	var n = document.getElementById("showProductNumber").value;
-	if(n>0){
+	if(n>1){
 		document.getElementById("showProductNumber").value = parseInt(n) - 1;
 	}
 }
@@ -42,7 +42,7 @@ function shoppingCartAddQuantity(id_product,max,price){
 	if(parseInt(n)<parseInt(max)){
 		document.getElementById("shoppingCartQuantity"+id_product).value = parseInt(n) + 1;
 		var x = document.getElementById("shoppingCartLinePrice"+id_product).value;
-		document.getElementById("shoppingCartLinePrice"+id_product).value = parseInt(x) + parseInt(price);
+		document.getElementById("shoppingCartLinePrice"+id_product).value = (parseFloat(x) + parseFloat(price)).toFixed(1);
 	}
 }
 
@@ -51,7 +51,7 @@ function shoppingCartSubQuantity(id_product,price){
 	if(n>1){
 		document.getElementById("shoppingCartQuantity"+id_product).value = parseInt(n) - 1;
 		var x = document.getElementById("shoppingCartLinePrice"+id_product).value;
-		document.getElementById("shoppingCartLinePrice"+id_product).value = parseInt(x) - parseInt(price);
+		document.getElementById("shoppingCartLinePrice"+id_product).value = (parseFloat(x) - parseFloat(price)).toFixed(1);
 	}
 }
 

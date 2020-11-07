@@ -6,10 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import com.john_deligiannis.gym_equipment.config.HibernateUtil;
-import com.john_deligiannis.gym_equipment.dto.ProductsAndTheirOffer;
 import com.john_deligiannis.gym_equipment.entities.Offers;
 import com.john_deligiannis.gym_equipment.entities.Products;
 import com.john_deligiannis.gym_equipment.entities.Users;
+import com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer;
 
 public class Queries {
 
@@ -53,7 +53,7 @@ public class Queries {
 		
 		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
 	    TypedQuery<ProductsAndTheirOffer> query = session.createQuery(
-	    		"SELECT NEW com.john_deligiannis.gym_equipment.dto.ProductsAndTheirOffer("
+	    		"SELECT NEW com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer("
 	    		+ " p.productsId AS productsId, p.title AS title,"
 	    		+ " p.description AS description, p.price AS price, o.price AS offerPrice,"
 	    		+ " p.photo1 AS photo1, p.photo2 AS photo2, p.quantity AS quantity)"
@@ -69,7 +69,7 @@ public class Queries {
 		
 		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
 	    TypedQuery<ProductsAndTheirOffer> query = session.createQuery(
-	    		"SELECT NEW com.john_deligiannis.gym_equipment.dto.ProductsAndTheirOffer("
+	    		"SELECT NEW com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer("
 	    		+ " p.productsId AS productsId, p.title AS title,"
 	    		+ " p.description AS description, p.price AS price, o.price AS offerPrice,"
 	    		+ " p.photo1 AS photo1, p.photo2 AS photo2, p.quantity AS quantity)"

@@ -96,12 +96,19 @@
 							<c:forEach var="product" items="${CART}" >
 								<div class="shopping-cart-line">
 									<p class="shopping-cart-line-label">${product.getTitle()}</p>
-									<input class="shopping-cart-remove-btn" type="submit" name="removeFromCart" value="X">
+									<form method="POST" action="shopping-cart/remove-item" id="shoppingCartRemoveItem">
+										<input class="shopping-cart-remove-btn" type="submit" name="removeFromCart" value="X">
+										<input type="hidden" name="productsId" value="${product.getProductsId()}">
+									</form>
 									<div class="shopping-cart-quantity-div">
 										<p class="shopping-cart-quantity-title">Quantity</p>
-										<input class="shopping-cart-quantity-btn" type="button" value="-"  onclick="shoppingCartSubQuantity('${product.getProductsId()}','${product.getProductsPrice()}')">
-										<input form="shoppingCartRefreshForm" class="shopping-cart-quantity-number" readonly type="number" value="${product.getQuantity()}" id="shoppingCartQuantity${product.getProductsId()}">
-										<input class="shopping-cart-quantity-btn" type="button" value="+" onclick="shoppingCartAddQuantity('${product.getProductsId()}','${product.getMaxQuantity()}','${product.getProductsPrice()}')">
+										<input class="shopping-cart-quantity-btn" type="button" value="-"  
+											onclick="shoppingCartSubQuantity('${product.getProductsId()}','${product.getPrice()}')">
+										<input form="shoppingCartRefreshForm" class="shopping-cart-quantity-number" readonly type="number" 
+											value="${product.getQuantity()}" id="shoppingCartQuantity${product.getProductsId()}"
+											name="productsQuantity_${product.getProductsId()}">
+										<input class="shopping-cart-quantity-btn" type="button" value="+" 
+											onclick="shoppingCartAddQuantity('${product.getProductsId()}','${product.getMaxQuantity()}','${product.getPrice()}')">
 									</div>
 									<div>
 										<p class="shopping-cart-line-price">Price : </p>
@@ -110,10 +117,10 @@
 								</div>
 							</c:forEach>
 							
-							<form id="shoppingCartRefreshForm" method="POST" action="shopping-cart.php">
-								<input type="hidden" name="shoppingCartRefresh" value="true">
-								<input type="submit" class="shopping-cart-refresh-btn" value="Refresh Cart">
+							<form id="shoppingCartRefreshForm" method="POST" action="shopping-cart/update">
+								<input type="submit" class="shopping-cart-refresh-btn" value="Update Quantities">
 							</form>
+							
 							<p class="profil-label" style="margin:2px;">Τρόπος αποστολής</p>
 							<select class="profil-input"><option>Αντικαταβολή</option></select>
 							

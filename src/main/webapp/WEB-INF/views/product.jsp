@@ -29,17 +29,23 @@
 					<p class="show-product-number-desc">Quantity </p>
 					<input type="hidden" name="productsId" value="${OFFER.getProducts().getProductsId()}">
 					<input type="button" value="-" class="show-product-number-btn" onclick="subFromShowProductNumber()">
-					<input type="number" value="0" readonly id="showProductNumber" class="show-product-number" name="productsQuantity">
+					<input type="number" value="1" min="1" readonly id="showProductNumber" class="show-product-number" name="productsQuantity" required>
 					<input type="button" value="+" class="show-product-number-btn" onclick="addToShowProductNumber('${OFFER.getProducts().getQuantity()}')">
 				</div>
-				<input type="submit" class="show-product-add-btn" value="Add to cart">
+				
+				<c:if test="${OFFER.getProducts().getQuantity() > 0}">
+					<input type="submit" class="show-product-add-btn" value="Add to cart">
+				</c:if>
+			
+				<c:if test="${OFFER.getProducts().getQuantity() == 0}">
+					<input type="submit" class="show-product-add-btn" value="Add to cart" disabled>
+				</c:if>
+			
 			</div>
 		</form>
 	</div>
 	
 </c:if>
-
-
 
 <c:if test="${not empty PRODUCT}">
 
@@ -77,10 +83,18 @@
 					<p class="show-product-number-desc">Quantity </p>
 					<input type="hidden" name="productsId" value="${PRODUCT.getProductsId()}">
 					<input type="button" value="-" class="show-product-number-btn" onclick="subFromShowProductNumber()">
-					<input type="number" value="0" readonly id="showProductNumber" class="show-product-number" name="productsQuantity">
+					<input type="number" value="1" min="1" readonly id="showProductNumber" class="show-product-number" name="productsQuantity" required>
 					<input type="button" value="+" class="show-product-number-btn" onclick="addToShowProductNumber('${PRODUCT.getQuantity()}')">
 				</div>
-				<input type="submit" class="show-product-add-btn" value="Add to cart">
+				
+				<c:if test="${PRODUCT.getQuantity() > 0}">
+					<input type="submit" class="show-product-add-btn" value="Add to cart">
+				</c:if>
+			
+				<c:if test="${PRODUCT.getQuantity() == 0}">
+					<input type="submit" class="show-product-add-btn" value="Add to cart" disabled>
+				</c:if>
+
 			</div>
 		</form>
 	</div>

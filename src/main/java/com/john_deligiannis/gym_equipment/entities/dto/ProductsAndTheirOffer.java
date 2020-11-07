@@ -1,4 +1,4 @@
-package com.john_deligiannis.gym_equipment.dto;
+package com.john_deligiannis.gym_equipment.entities.dto;
 
 public class ProductsAndTheirOffer {
 
