@@ -25,7 +25,7 @@ function showProductPhoto(radioId,imgId){
 
 function subFromShowProductNumber(){
 	var n = document.getElementById("showProductNumber").value;
-	if(n>1){
+	if(parseInt(n) > 1){
 		document.getElementById("showProductNumber").value = parseInt(n) - 1;
 	}
 }

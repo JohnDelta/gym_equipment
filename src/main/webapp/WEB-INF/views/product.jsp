@@ -50,7 +50,7 @@
 <c:if test="${not empty PRODUCT}">
 
 	<div class="show-product-div" id="showProductForm">
-		<form class="show-product-form" method="POST" action="add-product">
+		<form class="show-product-form" method="POST" action="products/add-product">
 			<a class="show-product-cancel-btn" onclick="redirectTo('products')">X</a>
 			
 			<div class="show-product-form-title-div">

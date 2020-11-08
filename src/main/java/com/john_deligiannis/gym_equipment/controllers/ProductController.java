@@ -20,6 +20,7 @@ import com.john_deligiannis.gym_equipment.queries.Queries;
 @Controller
 public class ProductController {
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(
 			value = "/products",
 			method = RequestMethod.GET
@@ -39,7 +40,15 @@ public class ProductController {
 		mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
 		
 		if(productsId != null) {
-			mv.addObject("PRODUCT", Queries.loadProductAndItsOffer(productsId));	
+			
+			ProductsAndTheirOffer product = Queries.loadProductAndItsOffer(productsId);
+			HashMap<Long, Long> cart = (HashMap<Long, Long>) session.getAttribute("cart");
+			
+			if(cart.containsKey(productsId)) {
+				product.setQuantity(product.getQuantity() - cart.get(productsId));
+			}
+			
+			mv.addObject("PRODUCT", product);
 		}
 		
 		mv.setViewName("index");
@@ -49,7 +58,7 @@ public class ProductController {
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(
-			value = "/add-product",
+			value = {"/add-product", "/products/add-product"},
 			method = RequestMethod.POST
 	)
 	public ModelAndView addProduct(

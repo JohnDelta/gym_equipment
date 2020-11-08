@@ -990,6 +990,10 @@ main{
 	color:#FF5722;
 	transition-duration:0.3s;
 }
+.show-product-add-btn:disabled {
+	opacity: 0.6;
+	pointer-events: none;
+}
 .show-product-select-photo{
 	padding:0px;
 }
