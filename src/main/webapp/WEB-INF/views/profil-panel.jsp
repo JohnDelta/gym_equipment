@@ -66,7 +66,7 @@
 									
 									<c:forEach var="orderItem" items="${order.getProducts()}">
 										<p class="profil-order-product-title">${orderItem.getKey().getTitle()}</p>
-										<p class="profil-order-quantity">Quantity : ${orderItem.getValue().getQuantity()} x  ${orderItem.getValue().getPrice()}&euro;</p>
+										<p class="profil-order-quantity">Quantity : ${orderItem.getValue()} x  ${orderItem.getKey().getPrice()}&euro;</p>
 									</c:forEach>
 									
 									<p class="profil-order-price">Price : ${order.getTotalPrice()}&euro;</p>

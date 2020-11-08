@@ -1,6 +1,7 @@
 package com.john_deligiannis.gym_equipment.controllers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -17,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.john_deligiannis.gym_equipment.config.HibernateUtil;
 import com.john_deligiannis.gym_equipment.entities.Orders;
 import com.john_deligiannis.gym_equipment.entities.OrdersItems;
+import com.john_deligiannis.gym_equipment.entities.Products;
 import com.john_deligiannis.gym_equipment.entities.Users;
+import com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer;
 import com.john_deligiannis.gym_equipment.entities.session.DetailedOrder;
 import com.john_deligiannis.gym_equipment.queries.Queries;
 
@@ -101,13 +104,22 @@ public class ProfilController {
 		for(Orders order: orders) {
 			
 			DetailedOrder detailedOrder = new DetailedOrder();
+			detailedOrder.setProducts(new HashMap<Products, Long>());
 			detailedOrder.setStatus(order.getStatus());
 			
 			Double totalPrice = 0d;
 			List<OrdersItems> items = Queries.loadUsersOrdersItems(order);
 			for(OrdersItems item: items) {
+				
+				ProductsAndTheirOffer product = Queries.loadProductAndItsOffer(item.getProducts().getProductsId());
+				if(product.getOfferPrice() != null) {
+					totalPrice += item.getQuantity() * product.getOfferPrice();
+					item.getProducts().setPrice(product.getOfferPrice());
+				} else {
+					totalPrice += item.getQuantity() * product.getPrice();
+				}
+				
 				detailedOrder.getProducts().put(item.getProducts(), item.getQuantity());
-				totalPrice += item.getQuantity() * item.getProducts().getPrice();
 			}
 			
 			detailedOrder.setTotalPrice(totalPrice);

@@ -40,7 +40,7 @@ header{
 .title-div h1 span{
   color:#FFF;
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	header{
 		z-index:1;
 	}
@@ -97,7 +97,7 @@ header{
 		background-color:rgba(155,30,0,0.9);
 	}
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	header{
 		z-index:3;
 	}
@@ -211,6 +211,7 @@ main{
 	background:url("cartIcon.png") no-repeat;
 	transition-duration:0.3s;
 	margin-right:10px;
+	margin-left:10px;
 	width:30px;
 	height:30px;
 	display:inline-block;
@@ -240,7 +241,7 @@ main{
 
 .user-bar-login-btn{
 	transition-duration:0.3s;
-	margin-right:15px;
+	margin-right:25px;
 	color:#FF5722;
 	text-decoration:none;
 	font-size:15px;
@@ -263,14 +264,14 @@ main{
   overflow:hidden;
   margin-top:12vh;
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.showcase-img{
 	  width:100vw;
 	  height:50vw;
 	  object-fit:cover;
 	}
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	.showcase-img{
 	  width:100vw;
 	  height:30vw;
@@ -335,7 +336,7 @@ main{
   border-bottom-right-radius:100%;
   border:none;
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	.products{
 	  margin:20px 0px 20px 0px;
 	  display:grid;
@@ -347,13 +348,14 @@ main{
 	.product{
 	  display:grid;
 	  width:22vw;
+	  max-width: 320px;
 	  background-color:#FFF;
 	  box-shadow:0px 0px 10px #000;
 	  border-top-right-radius:10px;
 	  border-top-left-radius:10px;
 	}
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.products{
 	  margin:20px 0px 20px 0px;
 	  display:grid;
@@ -365,6 +367,7 @@ main{
 	.product{
 	  display:grid;
 	  width:55vw;
+	  max-width: 320px;
 	  background-color:#FFF;
 	  box-shadow:0px 0px 10px #000;
 	  border-top-right-radius:10px;
@@ -472,7 +475,7 @@ main{
 	justify-content:center;
 	align-items:center;
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.login-form{
 		background-color:#FFF;
 		grid-column-gap:10px;
@@ -486,7 +489,7 @@ main{
 		width:100%;
 	}	
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	.login-form{
 		background-color:#FFF;
 		grid-column-gap:10px;
@@ -521,7 +524,7 @@ main{
 	min-width: 35px;
 	min-height: 35px;
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.login-cancel-btn{
 		margin-right:20px;
 	}
@@ -617,7 +620,7 @@ main{
 	align-items:center;
 }
 
-@media(min-width:700px){
+@media(min-width:900px){
 	.create-account-form{
 		background-color:#FFF;
 		grid-column-gap:10px;
@@ -634,7 +637,7 @@ main{
 		border-top-left-radius:10px;
 	}
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.create-account-form{
 		background-color:#FFF;
 		grid-column-gap:4px;
@@ -741,7 +744,7 @@ main{
 .fill-page{
 	min-height:80vh;
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	.split-main{
 		display:grid;
 		grid-template-columns:1fr 1fr;
@@ -754,7 +757,7 @@ main{
 		/*min-height:600px;*/
 	}	
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.split-main{
 		display:grid;
 		grid-template-columns:1fr;
@@ -1275,7 +1278,7 @@ main{
 .profil-orders-title{
 	margin:4px;
 }
-@media(max-width:700px){
+@media(max-width:900px){
 	.profil-order{
 		display:grid;
 		background-color:#FFF;
@@ -1284,7 +1287,7 @@ main{
 		grid-template-columns:auto;
 	}	
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	.profil-order{
 		display:grid;
 		background-color:#FFF;
@@ -1525,7 +1528,7 @@ main{
 }
 /*USERS --- END*/
 /*ADD PRODUCTS --- START*/
-@media(max-width:700px){
+@media(max-width:900px){
 	.add-product-div{
 		display:grid;
 		opacity:0;
@@ -1535,7 +1538,7 @@ main{
 		grid-column-gap:30px;
 	}	
 }
-@media(min-width:700px){
+@media(min-width:900px){
 	.add-product-div{
 		display:grid;
 		opacity:0;
