@@ -16,71 +16,48 @@ public class Orders {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ordersId")
-	private long orderId;
-	
-	@Column(name = "ordersNumber")
-	private long orderNumber;
+	private long ordersId;
 	
 	@Column(name = "quantity")
 	private long quantity;
 	
-	@Column(name = "checked")
-	private String checked;
+	@Column(name = "status")
+	private String status;
 	
 	@ManyToOne
 	@JoinColumn(name = "usersId", referencedColumnName = "usersId")
 	private Users users;
-	
-	@ManyToOne
-	@JoinColumn(name = "productsId", referencedColumnName = "productsId")
-	private Products products;
 
-	public long getOrderId() {
-		return orderId;
+	public long getOrdersId() {
+		return ordersId;
 	}
 
-	public long getOrderNumber() {
-		return orderNumber;
+	public void setOrdersId(long ordersId) {
+		this.ordersId = ordersId;
 	}
 
 	public long getQuantity() {
 		return quantity;
 	}
 
-	public String getChecked() {
-		return checked;
+	public void setQuantity(long quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Users getUsers() {
 		return users;
 	}
 
-	public Products getProducts() {
-		return products;
-	}
-
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
-	}
-
-	public void setOrderNumber(long orderNumber) {
-		this.orderNumber = orderNumber;
-	}
-
-	public void setQuantity(long quantity) {
-		this.quantity = quantity;
-	}
-
-	public void setChecked(String checked) {
-		this.checked = checked;
-	}
-
 	public void setUsers(Users users) {
 		this.users = users;
-	}
-
-	public void setProducts(Products products) {
-		this.products = products;
 	}
 
 }

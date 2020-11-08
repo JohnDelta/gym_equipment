@@ -14,10 +14,10 @@ public class Users {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "usersId")
-	private long usersId;
+	private Long usersId;
 	
 	@Column(name = "role")
-	private long role;
+	private Long role;
 	
 	@Column(name = "username")
 	private String username;
@@ -43,11 +43,11 @@ public class Users {
 	@Column(name = "city")
 	private String city;
 
-	public long getUsersId() {
+	public Long getUsersId() {
 		return usersId;
 	}
 
-	public long getRole() {
+	public Long getRole() {
 		return role;
 	}
 
@@ -83,11 +83,11 @@ public class Users {
 		return city;
 	}
 
-	public void setUsersId(long usersId) {
+	public void setUsersId(Long usersId) {
 		this.usersId = usersId;
 	}
 
-	public void setRole(long role) {
+	public void setRole(Long role) {
 		this.role = role;
 	}
 

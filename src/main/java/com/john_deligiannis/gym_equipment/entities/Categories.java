@@ -14,7 +14,7 @@ public class Categories {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "categoriesId")
-	private long categoriesId;
+	private Long categoriesId;
 	
 	@Column(name = "title")
 	private String title;
@@ -27,7 +27,7 @@ public class Categories {
 		return title;
 	}
 
-	public void setCategoriesId(long categoriesId) {
+	public void setCategoriesId(Long categoriesId) {
 		this.categoriesId = categoriesId;
 	}
 

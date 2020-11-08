@@ -16,20 +16,20 @@ public class Offers {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "offersId")
-	private long offersId;
+	private Long offersId;
 	
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	
 	@ManyToOne
 	@JoinColumn(name = "productsId", referencedColumnName = "productsId")
 	private Products products;
 
-	public long getOffersId() {
+	public Long getOffersId() {
 		return offersId;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -37,11 +37,11 @@ public class Offers {
 		return products;
 	}
 
-	public void setOffersId(long offersId) {
+	public void setOffersId(Long offersId) {
 		this.offersId = offersId;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 

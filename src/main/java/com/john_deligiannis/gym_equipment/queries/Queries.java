@@ -7,6 +7,8 @@ import javax.persistence.TypedQuery;
 
 import com.john_deligiannis.gym_equipment.config.HibernateUtil;
 import com.john_deligiannis.gym_equipment.entities.Offers;
+import com.john_deligiannis.gym_equipment.entities.Orders;
+import com.john_deligiannis.gym_equipment.entities.OrdersItems;
 import com.john_deligiannis.gym_equipment.entities.Products;
 import com.john_deligiannis.gym_equipment.entities.Users;
 import com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer;
@@ -99,4 +101,34 @@ public class Queries {
 		return user;
 	}
 	
+	public static List<Orders> loadUsersOrders(Users users) {
+		
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<Orders> query = session.createQuery(
+	    		"SELECT o FROM orders o WHERE o.users = :users", 
+	    		Orders.class
+	    );
+	    query.setParameter("users", users);
+		
+		return query.getResultList();
+	}
+	
+	public static List<OrdersItems> loadUsersOrdersItems(Orders orders) {
+		
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<OrdersItems> query = session.createQuery(
+	    		"SELECT o FROM ordersItems o WHERE o.orders = :orders", 
+	    		OrdersItems.class
+	    );
+	    query.setParameter("orders", orders);
+		
+		return query.getResultList();
+	}
+	
 }
+
+
+
+
+
+

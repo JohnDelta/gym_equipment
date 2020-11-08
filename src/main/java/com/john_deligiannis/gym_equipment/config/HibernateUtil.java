@@ -81,7 +81,7 @@ public class HibernateUtil {
     	user.setEmail("user@gmail.com");
     	user.setName("john");
     	user.setLastname("delta");
-    	user.setRole(1);
+    	user.setRole(1l);
     	user.setAddress("207b baker street");
     	user.setCity("london");
     	user.setPhone("+3090909090");
@@ -96,8 +96,8 @@ public class HibernateUtil {
     			+ " Διαστάσεις όταν στηθεί: 154 x 67 x 122 cm, Διαστάσεις διπλωμένο: 74 x 67 x 170 cm, Βάρος συσκευασίας: 23 Kg,"
     			+ " Διαστάσεις συσκευασίας: 118 x 38 x 21 cm, Πιστοποιήσεις: CE EN ISO 20957-1/957-4. Οι δίσκοι βάρους, η μπάρα,"
     			+ " το μαξιλάρι δικεφάλων και το κιτ πεταλούδας δεν περιλαμβάνονται.\r\n");
-    	product1.setPrice(125);
-    	product1.setQuantity(4);
+    	product1.setPrice(125d);
+    	product1.setQuantity(4l);
     	product1.setPhoto1("/images/product1/p1.jpg");
     	product1.setPhoto2("/images/product1/p2.jpg");
     	product1.setCategories(category);
@@ -115,8 +115,8 @@ public class HibernateUtil {
     			"Διαστάσεις συκευασίας: 110 x 48 x 21 cm. Πιστοποιήσεις: CE EN ISO 20957-1/957-4. Οι δίσκοι βάρους, η μπάρα"
     			+ " και το μαξιλάρι δικεφάλων δεν περιλαμβάνονται.\r\n" + 
     			"");
-    	product2.setPrice(185);
-    	product2.setQuantity(4);
+    	product2.setPrice(185d);
+    	product2.setQuantity(4l);
     	product2.setPhoto1("/images/product2/p1.jpg");
     	product2.setPhoto2("/images/product2/p2.jpg");
     	product2.setCategories(category);
@@ -133,8 +133,8 @@ public class HibernateUtil {
     			"Καθαρό βάρος: 28 κιλά\r\n" + 
     			"Βάρος συσκευασίας: 30 κιλά\r\n" + 
     			"Εγγύηση: 2 χρόνια (εφαιρούνται ταπετσαρίες και συρματόσχοινο)");
-    	product3.setPrice(208);
-    	product3.setQuantity(4);
+    	product3.setPrice(208d);
+    	product3.setQuantity(4l);
     	product3.setPhoto1("/images/product3/p1.jpeg");
     	product3.setPhoto2("/images/product3/p2.jpeg");
     	product3.setCategories(category);
@@ -155,8 +155,8 @@ public class HibernateUtil {
     			+ " τη καλή ροή και την αντοχή στο χρόνο. Μέγιστο βάρος ασκούμενου: 150 κιλά Διαστάσεις"
     			+ " μηχανήματος Μ/Π/Υ : 195/162/210 εκ. Βάρος μηχανήματος : 165 κιλά. Διαστάσεις συσκευασίας"
     			+ " : 1η κούτα 203/42/21, 2η κούτα 113/104/15\r\n");
-    	product4.setPrice(617);
-    	product4.setQuantity(4);
+    	product4.setPrice(617d);
+    	product4.setQuantity(4l);
     	product4.setPhoto1("/images/product4/p1.jpeg");
     	product4.setPhoto2("/images/product4/p2.jpg");
     	product4.setCategories(category);
@@ -168,8 +168,8 @@ public class HibernateUtil {
     			+ " πιέσεις στήθους, εκτάσεις προσαγωγών/απαγωγών, εκτάσεις ώμων, κωπηλατική, έλξεις δικέφαλων,"
     			+ " τρικέφαλων κ.α. Xαρακτηριστικά : Βάρος κορμού : 70 kg. Διαστάσεις : 149.5 x 111 x 203 cm."
     			+ " Μέγιστο βάρος χρήστη : 115 kg. Oδηγίες χρήσης : Περιλαμβάνονται\r\n");
-    	product5.setPrice(449);
-    	product5.setQuantity(4);
+    	product5.setPrice(449d);
+    	product5.setQuantity(4l);
     	product5.setPhoto1("/images/product5/p1.jpeg");
     	product5.setPhoto2("/images/product5/p2.jpg");
     	product5.setCategories(category);
@@ -188,8 +188,8 @@ public class HibernateUtil {
     			+ " x 29 x 19,5 cm + 49,5 x 29 x 19,5 cm + 49,5 x 29 x 19,5 cm.\r\n" + 
     			"Μέγιστο φορτίο ανά άσκηση: Πιέσεις στήθους: 118 kg. Πεκ ντεκ: 43 x 2 kg. Τροχαλία: 100 kg. Χαμηλή κωπηλατική:"
     			+ " 100 kg. Πιέσεις πλάτης: 95 kg\r\n");
-    	product6.setPrice(784);
-    	product6.setQuantity(4);
+    	product6.setPrice(784d);
+    	product6.setQuantity(4l);
     	product6.setPhoto1("/images/product6/p1.jpeg");
     	product6.setPhoto2("/images/product6/p2.jpeg");
     	product6.setCategories(category);
@@ -208,8 +208,8 @@ public class HibernateUtil {
     			+ " Καθαρό βάρος: 122 κιλά Συνολικό βάρος με συσκευασία: 130 κιλά Εγγύηση: 2 έτη (εξαιρούνται"
     			+ " συρματόσχοινα και ταπετσαρίες) Υπάρχει η επιλογή μετατροπής του μηχανισμού Smith, με"
     			+ " 4 παλινδρομικά ρουλεμάν επαγγ/κού τύπου, για άψογη επαγγ/κή ροή (επιπλέον κόστος 150,00€)\r\n");
-    	product7.setPrice(665);
-    	product7.setQuantity(4);
+    	product7.setPrice(665d);
+    	product7.setQuantity(4l);
     	product7.setPhoto1("/images/product7/p1.jpeg");
     	product7.setPhoto2("/images/product7/p2.jpg");
     	product7.setCategories(category);
@@ -219,8 +219,8 @@ public class HibernateUtil {
     	product8.setDescription("Πάγκος άρσης βαρών Amila με ορθοστάτες και ρυθμιζόμενη πλάτη. Περιγραφή Προϊόντος"
     			+ " : Πλάτη: ρυθμιζόμενη, Πάγκος: Άρσης βαρών με ορθοστάτες, Σωλήνας: Οβάλ 76?1,5mm, Μέγιστο βάρος χρήστη:"
     			+ " 150kg, Διαστάσεις: 183x106x115~147cm, Βάρος: 36kg\r\n");
-    	product8.setPrice(223.50);
-    	product8.setQuantity(4);
+    	product8.setPrice(223.50d);
+    	product8.setQuantity(4l);
     	product8.setPhoto1("/images/product8/p1.jpg");
     	product8.setPhoto2("/images/product8/p2.jpg");
     	product8.setCategories(category);
@@ -230,8 +230,8 @@ public class HibernateUtil {
     	product9.setDescription("Το βαρέως τύπου Πολυμηχάνημα JX-DS926 είναι εργονομικά σχεδιασμένο για να παρέχει τη δυνατότητα"
     			+ " ταυτόχρονης άσκησης έως και 3 ατόμων! Η ισχυρή δομή του το καθιστά ιδανικό για οικιακή χρήση υψηλών"
     			+ " απαιτήσεων αλλά και για χρήση σε studios, συλλόγους ή ξενοδοχεία.\r\n");
-    	product9.setPrice(2000);
-    	product9.setQuantity(4);
+    	product9.setPrice(2000d);
+    	product9.setQuantity(4l);
     	product9.setPhoto1("/images/product9/p1.jpeg");
     	product9.setPhoto2("/images/product9/p2.jpeg");
     	product9.setCategories(category);
@@ -256,8 +256,8 @@ public class HibernateUtil {
     			"- Πλαστικοποιημένα βάρη\r\n" + 
     			"- Μέγιστο βάρος ασκούμενου: 130 κιλά\r\n" + 
     			"- Διαστάσεις (Συναρμολογημένο): 168 (Μ) x 100 (Π) x 210 (Υ) εκατοστά");
-    	product10.setPrice(399);
-    	product10.setQuantity(4);
+    	product10.setPrice(399d);
+    	product10.setQuantity(4l);
     	product10.setPhoto1("/images/product10/p1.jpg");
     	product10.setPhoto2("/images/product10/p2.jpeg");
     	product10.setCategories(category);

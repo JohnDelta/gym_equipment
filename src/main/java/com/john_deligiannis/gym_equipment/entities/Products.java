@@ -16,7 +16,7 @@ public class Products {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "productsId")
-	private long productsId;
+	private Long productsId;
 	
 	@Column(name = "title")
 	private String title;
@@ -25,7 +25,7 @@ public class Products {
 	private String description;
 	
 	@Column(name = "price")
-	private double price;
+	private Double price;
 	
 	@Column(name = "photo1")
 	private String photo1;
@@ -34,7 +34,7 @@ public class Products {
 	private String photo2;
 	
 	@Column(name = "quantity")
-	private long quantity;
+	private Long quantity;
 	
 	@ManyToOne
 	@JoinColumn(name = "categoriesId", referencedColumnName = "categoriesId")
@@ -48,7 +48,7 @@ public class Products {
 		this.categories = categories;
 	}
 
-	public long getProductsId() {
+	public Long getProductsId() {
 		return productsId;
 	}
 
@@ -60,7 +60,7 @@ public class Products {
 		return description;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -72,11 +72,11 @@ public class Products {
 		return photo2;
 	}
 
-	public long getQuantity() {
+	public Long getQuantity() {
 		return quantity;
 	}
 
-	public void setProductsId(long productsId) {
+	public void setProductsId(Long productsId) {
 		this.productsId = productsId;
 	}
 
@@ -88,7 +88,7 @@ public class Products {
 		this.description = description;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -100,8 +100,33 @@ public class Products {
 		this.photo2 = photo2;
 	}
 
-	public void setQuantity(long quantity) {
+	public void setQuantity(Long quantity) {
 		this.quantity = quantity;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((productsId == null) ? 0 : productsId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Products other = (Products) obj;
+		if (productsId == null) {
+			if (other.productsId != null)
+				return false;
+		} else if (!productsId.equals(other.productsId))
+			return false;
+		return true;
 	}
 
 }

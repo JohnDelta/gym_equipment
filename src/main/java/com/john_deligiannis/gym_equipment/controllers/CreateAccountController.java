@@ -61,7 +61,7 @@ public class CreateAccountController {
 		user.setAddress(formData.get("address").get(0));
 		user.setCity(formData.get("city").get(0));
 		user.setPhone(formData.get("phone").get(0));
-		user.setRole(1);
+		user.setRole(1l);
 		
         if(create(user)) {
 			session.setAttribute("username", user.getUsername());
