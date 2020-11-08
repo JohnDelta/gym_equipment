@@ -50,6 +50,15 @@ public class Queries {
 	    
 		return query.getResultList();
 	}
+		
+	public static Products loadProduct(Long productsId) {
+		
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<Products> query = session.createQuery("SELECT c FROM products c WHERE c.productsId = :productsId", Products.class);
+	    query.setParameter("productsId", productsId);
+	    
+		return query.getSingleResult();
+	}
 	
 	public static List<ProductsAndTheirOffer> loadProductsAndTheirOffer() {
 		
@@ -97,6 +106,20 @@ public class Queries {
 		if(user != null) {
 			user.setPassword("");
 		}
+		
+		return user;
+	}
+	
+	public static Users loadUserRawByUsername(String username) {
+		
+		Users user = null;
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<Users> query = session.createQuery(
+	    		"SELECT u FROM users u WHERE u.username = :username", 
+	    		Users.class
+	    );
+	    query.setParameter("username", username);
+		user = query.getSingleResult();
 		
 		return user;
 	}

@@ -18,9 +18,6 @@ public class Orders {
     @Column(name = "ordersId")
 	private long ordersId;
 	
-	@Column(name = "quantity")
-	private long quantity;
-	
 	@Column(name = "status")
 	private String status;
 	
@@ -34,14 +31,6 @@ public class Orders {
 
 	public void setOrdersId(long ordersId) {
 		this.ordersId = ordersId;
-	}
-
-	public long getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(long quantity) {
-		this.quantity = quantity;
 	}
 
 	public String getStatus() {

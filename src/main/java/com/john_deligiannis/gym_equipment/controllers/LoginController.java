@@ -1,5 +1,10 @@
 package com.john_deligiannis.gym_equipment.controllers;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.servlet.http.HttpServletRequest;
@@ -7,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +21,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.john_deligiannis.gym_equipment.config.HibernateUtil;
 import com.john_deligiannis.gym_equipment.entities.Users;
+import com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer;
+import com.john_deligiannis.gym_equipment.entities.session.ShoppingCartDetailedItem;
 import com.john_deligiannis.gym_equipment.queries.Queries;
 
 @Controller
 public class LoginController {
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(
-			value = {"/login", "/products/login"},
+			value = {"/login", "/products/login", "/shopping-cart/login"},
 			method = RequestMethod.GET
 	)
 	public ModelAndView getLogin(
@@ -38,10 +47,22 @@ public class LoginController {
 			mv.addObject("ERROR", "");	
 		}
 		
+		List<ShoppingCartDetailedItem> detailedItems = new ArrayList<>();
+		if(!((HashMap<Long, Long>) session.getAttribute("cart")).isEmpty()) {
+			detailedItems = ShoppingCartController.fillShoppingCartDetailed((HashMap<Long, Long>) session.getAttribute("cart"));
+		}
+		mv.addObject("CART", detailedItems);
+		
+		mv.addObject("LOAD_PANEL", "SHOPPING_CART");
+		
 		boolean inProducts = false;
+		boolean inShoppingCart = false;
 		for(String sector: path.split("/")) {
 			if(sector.equals("products")) {
 				inProducts = true;
+			}
+			if(sector.equals("shopping-cart")) {
+				inShoppingCart = true;
 			}
 		}
 		
@@ -49,6 +70,8 @@ public class LoginController {
 			mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
 			mv.addObject("FROM_VIEW", "products");
 			mv.addObject("LOAD_PANEL", "PRODUCTS");
+		} else if(inShoppingCart) {
+			
 		} else {
 			mv.addObject("OFFERS", Queries.loadOffers());
 			mv.addObject("FROM_VIEW", "");
@@ -61,14 +84,15 @@ public class LoginController {
 	}
 
 	@RequestMapping(
-			value = {"/login", "/products/login"},
+			value = {"/login", "/products/login", "/shopping-cart/login"},
 			method = RequestMethod.POST,
 			consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
 	)
 	public ModelAndView postLogin(
 			@RequestBody MultiValueMap<String, String> formData,
 			HttpSession session,
-			HttpServletRequest request
+			HttpServletRequest request,
+			ModelMap model
 	) {
 		
 		String path = request.getRequestURI().toString();
@@ -80,29 +104,26 @@ public class LoginController {
 		if(user != null) {
 			session.setAttribute("username", user.getUsername());
 			session.setAttribute("role", user.getRole());
-		} else {
-			mv.addObject("LOAD_LOGIN", "TRUE");
-			mv.addObject("ERROR", "Unable to login");
 		}
 		
 		boolean inProducts = false;
+		boolean inShoppingCart = false;
 		for(String sector: path.split("/")) {
 			if(sector.equals("products")) {
 				inProducts = true;
 			}
+			if(sector.equals("shopping-cart")) {
+				inShoppingCart = true;
+			}
 		}
 		
 		if(inProducts) {
-			mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
-			mv.addObject("FROM_VIEW", "products");
-			mv.addObject("LOAD_PANEL", "PRODUCTS");
+			return new ModelAndView("redirect:/products", model);
+		} else if(inShoppingCart) {
+			return new ModelAndView("redirect:/shopping-cart", model);
 		} else {
-			mv.addObject("OFFERS", Queries.loadOffers());
-			mv.addObject("FROM_VIEW", "");
-			mv.addObject("LOAD_PANEL", "MAIN");	
+			return new ModelAndView("redirect:/", model);
 		}
-		
-        return mv; 	
 	}
 	
 	private Users login(String username, String password) {

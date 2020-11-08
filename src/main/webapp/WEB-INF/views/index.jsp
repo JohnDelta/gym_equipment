@@ -16,6 +16,14 @@
 		<c:if test="${LOAD_PANEL == 'MAIN'}">
 			<title>Gym Equipment | Home</title>
 		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'SHOPPING_CART'}">
+			<title>Gym Equipment | Cart</title>
+		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'PROFIL'}">
+			<title>Gym Equipment | Profil</title>
+		</c:if>
 	</head>
 	<body>
 	
@@ -31,6 +39,10 @@
 		
 		<c:if test="${LOAD_PANEL == 'SHOPPING_CART'}">
 			<%@ include file="shopping-cart-panel.jsp" %>
+		</c:if>
+		
+		<c:if test="${LOAD_PANEL == 'PROFIL'}">
+			<%@ include file="profil-panel.jsp" %>
 		</c:if>
 		
 		<%@ include file="footer.jsp" %>

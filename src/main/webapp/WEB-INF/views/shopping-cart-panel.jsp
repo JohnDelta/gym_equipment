@@ -15,7 +15,7 @@
 		</c:if>
 		
 		<c:if test="${sessionScope.role == 0}">
-			<a class='user-bar-login-btn' href='products/login' >Login</a>
+			<a class='user-bar-login-btn' href='shopping-cart/login' >Login</a>
 		</c:if>
 		
 	</div>
@@ -124,7 +124,7 @@
 							<p class="profil-label" style="margin:2px;">Τρόπος αποστολής</p>
 							<select class="profil-input"><option>Αντικαταβολή</option></select>
 							
-							<form method="POST" action="shopping-cart.php" id="sendOrderForm">
+							<form method="POST" action="shopping-cart/order" id="sendOrderForm">
 								<p class="shopping-cart-total-price">
 									Total Price : <c:out value="${sessionScope.total}"></c:out>&euro;
 								</p>

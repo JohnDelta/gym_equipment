@@ -12,5 +12,10 @@ public class InitializeSession {
 		session.setAttribute("role", "0");
 		session.setAttribute("cart", new HashMap<Long, Long>());
 	}
+	
+	public void initCart(HttpSession session) {
+		session.setAttribute("cart", new HashMap<Long, Long>());
+		session.setAttribute("total", "0.0");
+	}
 
 }
