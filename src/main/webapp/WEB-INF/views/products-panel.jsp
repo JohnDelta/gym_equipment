@@ -35,7 +35,7 @@
 			<c:if test="${not empty PRODUCTS}">
 				<c:forEach var="product" items="${PRODUCTS}">
 					<div class="product">
-						<img class="product-img" src="<c:url value="${product.getPhoto1()}"/>" >
+						<img class="product-img" src="<c:url value="${product.getPhoto1()}?productsPage=${sessionScope.productsPage}"/>" >
 						<p class="product-title"> ${product.getTitle()} </p>
 						<p class="product-desc"> ${product.getDescription()} </p>
 						<p class="product-price">
@@ -50,7 +50,7 @@
 						</c:if>
 						
 						</p>
-						<a class="product-btn" href="products?productsId=${product.getProductsId()}">
+						<a class="product-btn" href="products?productsPage=${sessionScope.productsPage}&productsId=${product.getProductsId()}">
 							See product >>
 							<span class="arrow">></span>
 						</a>
@@ -75,7 +75,7 @@
 						<a class="change-page disabled" href="?productsPage=${sessionScope.productsPage - 1}" >PREV</a>
 					</c:if>
 					
-					<div class="current-page"> <c:out value="${sessionScope.productsPage}"></c:out> </div>
+					<div class="current-page"> <c:out value="${sessionScope.productsPage + 1}"></c:out> </div>
 					
 					<c:if test="${sessionScope.productsPage + 1 < sessionScope.numberOfPages}">
 						<a class="change-page" href="?productsPage=${sessionScope.productsPage + 1}" >NEXT</a>

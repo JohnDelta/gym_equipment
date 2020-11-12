@@ -1,7 +1,13 @@
 # gym_equipment
 
 ## About
-E-shop selling gym equipment created using the Spring MVC framework
+E-shop selling gym equipment created using the Spring MVC framework, JPA & Hibernate.
+
+### Basic functionalities involve
+- Products & offers view panels
+- User registration
+- User basket, checkout, order
+- User previous orders and status view
 
 # Build Info
 
