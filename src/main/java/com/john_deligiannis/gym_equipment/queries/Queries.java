@@ -76,6 +76,34 @@ public class Queries {
 		
 	}
 	
+	public static List<ProductsAndTheirOffer> loadProductsAndTheirOfferWithinLimit(int start, int end) {
+		
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<ProductsAndTheirOffer> query = session.createQuery(
+	    		"SELECT NEW com.john_deligiannis.gym_equipment.entities.dto.ProductsAndTheirOffer("
+	    		+ " p.productsId AS productsId, p.title AS title,"
+	    		+ " p.description AS description, p.price AS price, o.price AS offerPrice,"
+	    		+ " p.photo1 AS photo1, p.photo2 AS photo2, p.quantity AS quantity)"
+	    		+ " FROM products p LEFT JOIN offers o ON o.products = p", 
+	    		ProductsAndTheirOffer.class
+	    );
+	    
+		return query.setFirstResult(start).setMaxResults(end).getResultList();
+		
+	}
+	
+	public static Long getNumberOfProducts() {
+		
+		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();
+	    TypedQuery<Long> query = session.createQuery(
+	    		"SELECT COUNT(p) FROM products p", 
+	    		Long.class
+	    );
+	    
+		return query.getSingleResult().longValue();
+		
+	}
+	
 	public static ProductsAndTheirOffer loadProductAndItsOffer(long productsId) {
 		
 		EntityManager session = HibernateUtil.getSessionFactory().createEntityManager();

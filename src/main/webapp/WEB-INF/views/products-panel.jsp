@@ -56,6 +56,7 @@
 						</a>
 					</div>
 				</c:forEach>
+				
 			</c:if>
 			
 			<c:if test="${empty PRODUCTS}">
@@ -63,6 +64,29 @@
 			</c:if>
 	
 		</div>
+		
+		<c:if test="${not empty PRODUCTS}">
+			<div class="pagination-div">
+				<div class="block">
+					<c:if test="${sessionScope.productsPage > 0}">
+						<a class="change-page" href="?productsPage=${sessionScope.productsPage - 1}" >PREV</a>
+					</c:if>
+					<c:if test="${sessionScope.productsPage <= 0}">
+						<a class="change-page disabled" href="?productsPage=${sessionScope.productsPage - 1}" >PREV</a>
+					</c:if>
+					
+					<div class="current-page"> <c:out value="${sessionScope.productsPage}"></c:out> </div>
+					
+					<c:if test="${sessionScope.productsPage + 1 < sessionScope.numberOfPages}">
+						<a class="change-page" href="?productsPage=${sessionScope.productsPage + 1}" >NEXT</a>
+					</c:if>
+					<c:if test="${sessionScope.productsPage + 1 >= sessionScope.numberOfPages}">
+						<a class="change-page disabled" href="?productsPage=${sessionScope.productsPage + 1}" >NEXT</a>
+					</c:if>
+				</div>
+			</div>
+		</c:if>
+		
 	</div>
 	
 </main>

@@ -336,6 +336,44 @@ main{
   border-bottom-right-radius:100%;
   border:none;
 }
+
+.pagination-div {
+	width: 100vw;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pagination-div > .block {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	grid-gap: 10px;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.pagination-div > .block .change-page {
+	font-family: 'Audiowide';
+	font-size: 16px;
+	padding: 4px;
+	color:#e82c00;
+	background-color:#FFF;
+	box-shadow:0px 0px 10px #000;
+	text-decoration: none;
+}
+
+.disabled {
+	pointer-events: none;
+	filter: brightness(50%);
+}
+
+.pagination-div > .block .current-page {
+	font-family: 'Audiowide';
+	font-size: 24px;
+	color:#e82c00;
+}
+
 @media(min-width:900px){
 	.products{
 	  margin:20px 0px 20px 0px;

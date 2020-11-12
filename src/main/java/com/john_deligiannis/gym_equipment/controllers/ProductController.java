@@ -26,6 +26,7 @@ public class ProductController {
 			method = RequestMethod.GET
 	)
 	public ModelAndView getProducts(
+			@RequestParam(value = "productsPage", required = false) Long productsPage,
 			@RequestParam(value = "productsId", required = false) Long productsId,
 			HttpSession session
 	) {
@@ -37,7 +38,23 @@ public class ProductController {
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("LOAD_PANEL", "PRODUCTS");
-		mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOffer());
+		
+		// for pagination security (6 items each page)
+		Long totalNumberOfProducts = Queries.getNumberOfProducts();
+		Integer numberOfPages = (int) (totalNumberOfProducts / 6);
+		numberOfPages += (totalNumberOfProducts % 6 > 0) ? 1 : 0;
+		
+		if(productsPage == null || productsPage < 0 || productsPage + 1 > numberOfPages) {
+			new InitializeSession().initPaginationVars(session);
+			productsPage = Long.parseLong(session.getAttribute("productsPage").toString());
+		} else {
+			session.setAttribute("productsPage", productsPage);
+		}
+		
+		int start = productsPage.intValue() * 6;
+		int end = (productsPage.intValue() * 6) + 6;
+		
+		mv.addObject("PRODUCTS", Queries.loadProductsAndTheirOfferWithinLimit(start, end));
 		
 		if(productsId != null) {
 			
