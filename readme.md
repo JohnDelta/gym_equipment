@@ -1,7 +1,15 @@
 # gym_equipment
 
 ## About
-E-shop selling gym equipment created using the Spring MVC framework, JPA & Hibernate.
+Concept project of an e-shop that sells gym equipment created using the Spring MVC framework.
+For this project, I:
+- Utilized Spring MVC and created controllers to handle
+requests about views, registrations, orders, eshop cart
+utilities and sessions
+- Implemented a JPA-Hibernate relational database to store
+products, users and orders
+- Developed the Front-End of the website using JSTL,
+HTML5, CSS3 and Javascript
 
 ### Basic functionalities involve
 - Products & offers view panels
